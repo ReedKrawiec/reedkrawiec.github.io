@@ -1,0 +1,94 @@
+<html>
+    
+    <head>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="../css/css.css">
+        <title>Reed Krawiec</title>
+        <style>
+            html {
+                background-image:url("../backgrounds/background7.jpg");
+                background-size:cover;
+            }
+            .projectswrap {
+                padding-top: 2em;
+                display:flex;
+                align-content:center;
+                justify-content:center;
+                flex-direction:row;
+                padding-left: 1em;
+                padding-right: 1em;
+            }
+            .projectclass {
+                height:40%;
+                width:30%;
+                background-color:rgba(0, 0, 0, 0.7);
+                border-radius:2em;
+                border:solid white;
+                display:flex;
+                flex-direction:column;
+            }
+            .projectimg {
+                height:50%;
+                background-color:white;
+                border-radius:5em;
+            }
+            .projecttext {
+                color:white;
+                font-family: mainfont;
+                font-size:3em;
+            }
+            .spliter {
+                height:40%;
+                width:2em;
+            }
+            .padder {
+                padding-top: 0.5em;
+                padding-bottom: 0.5;
+            }
+            #text2{
+                font-size:2.5em;
+            }
+            @media screen and (max-width:950px){
+                #text2{
+                    font-size:2em;
+                }
+                #text1{
+                    font-size:2.5em;
+                }
+            }
+        </style>
+        <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    </head>
+    
+    <body>
+        <div class="backgroundwrap" id="bg1"></div>
+        <div class="titlewrap"> <a href="../">
+                <p class="title">Reed Krawiec</p>       
+            </a>
+
+        </div>
+        <center>
+            <div class="subtitlewrap">
+                <p class="subtitle" style="color:white">Projects</p>
+            </div>
+            <div class="projectswrap">
+                <div class="projectclass">
+                    <a href="../Super-Duper-Bot">
+                    <div class="padder">
+                        <img class="projectimg" src="images/sdb.png" />
+                        <p class="projecttext" id="text1">A simple twitch bot with node.js and nw.js</p>
+                    </div>
+                    </a>
+                </div>
+                <div class="spliter"></div>
+                <div class="projectclass"> <a href="../Kappa-Klicker">
+                    <div class="padder">
+                    <img class="projectimg" src="images/kappa1.png"/>    
+                        <p class="projecttext" id="text2">A humorous copy of Cookie Clicker based on Twitch.tv's Kappa emote.</p>
+                    </div>
+                    </a>
+
+                </div>
+            </div>
+        </center>
+    </body>

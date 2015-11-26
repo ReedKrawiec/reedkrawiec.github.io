@@ -1,0 +1,48 @@
+<html>
+<head>
+<title>B&W/Inv Generator</title>
+</head> 
+<style>
+html{
+  height:100%;
+  width:100%;
+  background-color:darkgray
+}
+.container{
+  height:100%;
+  width:100%;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:column;
+}
+@font-face{
+  font-family:code;
+
+}
+#canvascontainer{
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction:row;
+  display:none;
+}
+</style>
+<div class = "container">
+<h1>Black and White/Inverted Image Generator</h1>
+<form>
+<select id="dropdown">
+  <option>Black and White</option>
+  <option>Inverted Colors</option>
+</select>
+</form>
+<input style="outline:solid black"type="file" id="input"/>
+<br>
+<div id="canvascontainer">
+<canvas style = "outline:solid black" id="canvas1"></canvas>
+<canvas style = "outline:solid black" id="canvas"></canvas>
+</div>
+<p>Right click to save.</p>
+</div>
+</html>
+<script src ="blackandwhite.js"></script>
