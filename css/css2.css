@@ -98,7 +98,7 @@ i{
 }
 .project_link{
   height:25%;
-  width:50%;
+  width:100%;
   background-color:#995C3D;
   border:solid #522A21;
   overflow: hidden;
@@ -170,10 +170,6 @@ i{
   display:none;
   height:250px;
 }
-#project_4_background{
-  position:relative;
-  top:-25vh;
-}
 #language_box_1{
   background-color:#CC3300;
 }
@@ -236,7 +232,7 @@ i{
   background-color: white;
   width:100%;
 }
-#black_cover_1,#black_cover_2,#black_cover_3,#black_cover_4,#black_cover_5{
+.black_cover{
   opacity: 0.5;
   background-color:black;
   position:absolute;
@@ -245,7 +241,7 @@ i{
   z-index: 1;
   transition: opacity 0.25s;
 }
-#project_1_background,#project_2_background,#project_3_background,#project_4_background,#project_5_background{
+.project_background{
   width: 110%;
   position: absolute;
       top: -9999px;
@@ -408,44 +404,16 @@ i{
 #Page_1_click:hover,#Page_2_click:hover,#Page_3_click:hover,#Page_4_click:hover{
     opacity:0.9;
 }
-#Page_1_click:hover #Page_1_Bar{
+.Info_Underline_Container:hover .bar{
     width:100%;
 }
-#Page_2_click:hover #Page_2_Bar{
-    width:100%;
-}
-#Page_3_click:hover #Page_3_bar{
-    width:100%;
-}
-#Page_4_click:hover #Page_4_bar{
-    width:100%;
-}
-#project_1:hover #black_cover_1{
+.project_link:hover .black_cover{
   opacity: 0.2;
 }
-#project_2:hover #black_cover_2{
-  opacity: 0.2;
-}
-#project_3:hover #black_cover_3{
-  opacity: 0.2;
-}
-#project_5_linker:hover #black_cover_5{
-  opacity: 0.2;
-}
-#project_1:hover #project_1_background{
-  width: 100%;
-}
-#project_2:hover #project_2_background{
-  width: 100%;
-}#project_3:hover #project_3_background{
-  width: 100%;
-}
-#project_4:hover #project_4_background{
+.project_link:hover .project_background{
   width:100%;
 }
-#project_5_linker:hover #project_5_background{
-  width: 100%;
-}
+
 /* Media Rules */
 @media screen and (orientation:portrait) {
   #Page_2{
