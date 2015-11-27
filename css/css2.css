@@ -50,12 +50,14 @@ i{
   position:absolute;
   z-index: 5;
   font-size:0.6em;
+
 }
 .bottom_left,.bottom_right{
-  bottom:0;
+  bottom:-100%;
+  transition: all 0.25s;
 }
 .top_left,.top_right{
-  top:0;
+  top:-100%;
 }
 .top_left,.bottom_left{
   left:0;
@@ -103,6 +105,7 @@ i{
   border:solid #522A21;
   overflow: hidden;
   position:relative;
+  border-width:2px;
 }
 .meme{
   padding-bottom: 10px;
@@ -410,7 +413,12 @@ i{
 .project_link:hover .project_background{
   width:100%;
 }
-
+.project_link:hover .bottom_left{
+  bottom:0;
+}
+.project_link:hover .bottom_right{
+  bottom:0;
+}
 /* Media Rules */
 @media screen and (orientation:portrait) {
   #Page_2{

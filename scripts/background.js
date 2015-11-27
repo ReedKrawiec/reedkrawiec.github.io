@@ -6,6 +6,8 @@ if(window.location.protocol=="https:"){
 
 $( document ).ready(function(){
 
+
+
   $("#piechart").css("width",$("#piechart").height());
   var words = ["programs.","websites.","games.","user interfaces.","servers.","cool things."]
   var current_word = words[0];
@@ -178,12 +180,16 @@ function word_change(){
       }
       epic = 2;
     }
-      $("#dropdown").css("top",$("#Main_Info_Container").height()-1);
-      $("#menu_click").click(function(){
-        $("#dropdown").stop();
-        $("#dropdown").toggle("fast");
-      })
+
 }
+
+$("#dropdown").css("top","57px");
+
+$("#menu_click").click(function(){
+  $("#dropdown").stop();
+  $("#dropdown").toggle("fast");
+})
+
 $("#language_box_1").css("opacity","1");
 var current_box = "box_1";
 var things = ["#language_box_1","#language_box_2","#language_box_3"]
@@ -248,4 +254,5 @@ $("#language_box_3").click(function(){
     }
   }
 });
+
 //url("../backgrounds/background1.jpg");
