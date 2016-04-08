@@ -1,0 +1,38 @@
+#About{
+    .About-Me-Head{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    .About-Me-Image{
+        width:100px;
+        border-radius: 10%;;
+        border:solid #002e3d;
+    }
+    .Wing{
+      height:30px;
+      width:40%;
+      border: solid 2px#002e3d;
+      background-color:#00804c;
+    }
+    .Wing:nth-of-type(1){
+      border-right:none;
+    }
+    .Wing:nth-of-type(2){
+      border-left:none;
+    }
+  }
+  .paragraph-container{
+    width:100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top:100px;
+    .paragraph{
+      width:80%;
+      font-size:2em;
+      color:white;
+      text-align: center;
+      text-shadow: 1px 1px black;
+    }
+  }
+}

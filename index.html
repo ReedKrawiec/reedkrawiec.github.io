@@ -9,67 +9,69 @@
 </head>
 
 <body>
-  <nav id="Main_Info_Container">
-    <p id="top_bar_place_holder">:)</p>
-    <div id="dropdown" style="">
-      <div class="flex_container2">
-        <p class="info" id="Page_1_Mobile">About Me</p>
-        <p class="info" id="Page_2_Mobile">Project</p>
-        <p class="info" id="Page_4_Mobile">Experience</p>
-      </div>
-    </div>
-    <div id="links_holder">
-      <div class="header_link" id="Page_1_link">
-        <div id="Page_1_click" class="Info_Underline_Container fullopacity">
-          <p class="info ">About Me</p>
-          <div id="Page_1_Bar" class="bar fullwidth"></div>
-        </div>
-      </div>
-      <div id="Page_2_link" class="header_link">
-        <div id="Page_2_click" class="Info_Underline_Container">
-          <p class="info">Projects</p>
-          <div id="Page_2_Bar" class="bar"></div>
-        </div>
-      </div>
-      <div id="Page_4_link" class="header_link">
-        <div id="Page_4_click" class="Info_Underline_Container">
-          <p class="info">Experience</p>
-          <div id="Page_4_Bar" class="bar"></div>
-        </div>
-      </div>
-      <div id="menu_click">
-        <div class="icon-menu" id="menu" style=""></div>
-      </div>
-    </div>
-    <div id="topbar_left" class="flexxy">
-      <!--
-      <div class="flexxy" id="stuffs">
-        <a href="mailto:reedkrawiec@gmail.com">
-          <p class="icon-mail meme"></p>
-        </a>
-        <a href="http://github.com/reedkrawiec">
-          <p class="icon-github meme"></p>
-        </a>
-        <a href="http://twitter.com/reedkrawiec">
-          <p class="icon-twitter meme"></p>
-        </a>
-        <a href="/blog">
-          <p class="icon-blogger meme" style="font-size:0.5em"></p>
-        </a>
+  <nav id="NavBar">
 
-      </div>
-    -->
-    </div>
   </nav>
-  <div id="Page_1">
+  <section id="Page_1">
     <div id="Main_Container">
       <div id="Main_Name_Container">
         <p id="Page_1_Message">Hi, im Reed. I make and design <span id="message_word"> programs.</span><span id="cursor_bar">|</span>
         </p>
       </div>
     </div>
-  </div>
-  <div id="Projects_Hook"></div>
+  </section>
+  <section class="section" id="About">
+    <p class="Section-Title">About Me</p>
+    <div class="About-Me-Head">
+      <div class="Wing">
+      </div>
+      <img class="About-Me-Image" src="https://avatars1.githubusercontent.com/u/12550372?v=3&s=460">
+      </img>
+      <div class="Wing">
+      </div>
+    </div>
+    <div class="paragraph-container">
+      <p class="paragraph">My name is Reed Krawiec, and I like to design software and websites. I hope you enjoy what you see. Feel free to contact me at reedkrawiec@gmail.com.</p>
+    </div>
+  </section>
+  <section class="section" id="projects">
+    <p class="Section-Title">Projects</p>
+    <div id="Projects_Hook"></div>
+  </section>
+  <section class="skills" id="skills">
+    <p class="Section-Title">Skills</p>
+    <div class="Language-List-Container">
+      <div class="Language-List">
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Experienced</p>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>Javascript</li>
+              <li>JQuery</li>
+            </ul>
+          </section>
+        </div>
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Intermediate</p>
+            <ul>
+              <li>Node.js</li>
+            </ul>
+          </section>
+        </div>
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Learning</p>
+            <ul>
+              <li>React</li>
+            </ul>
+          </section>
+        </div>
+      </div>
+    </div>
+  </section>
   <script src="script/jquery.min.js"></script>
   <script src="script/bundled.min.js"></script>
 </body>

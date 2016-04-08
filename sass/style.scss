@@ -1,1 +1,28 @@
+@import "Mixins";
+@import "Normalize";
 @import 'legacy';
+@import 'Project';
+@import 'AboutMe';
+@import 'Skill';
+@import 'NavBar';
+
+* {
+  box-sizing:border-box;
+}
+
+a{
+  margin:0;
+  padding:0;
+}
+
+.section{
+  margin-top:200px;
+}
+
+.Section-Title{
+  width:100%;
+  color:white;
+  font-size:3em;
+  text-shadow:3px 3px #002e3d;
+  text-align: center;
+}

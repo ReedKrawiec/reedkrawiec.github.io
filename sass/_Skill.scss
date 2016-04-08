@@ -1,0 +1,28 @@
+$section-background:#00804c;
+$section-border:#002e3d;
+$section-text-shadow:#003300;
+.Language-List-Container{
+  .Language-List{
+    width:100%;
+    height:400px;
+    @include CenterFlex;
+    .Language-List-Section-Container{
+      @include CenterFlex;
+      width:33%;
+      height:100%;
+      .Language-List-Section{
+        box-shadow: 2px 2px 5px black;
+        background-color:$section-background;
+        border:solid 2px $section-border;
+        @include CenterFlex;
+        flex-direction: column;
+        justify-content: flex-start;
+        text-shadow:3px 3px $section-text-shadow;
+        width:90%;
+        color:white;
+        font-size:2em;
+        height:300px;
+      }
+    }
+  }
+}
