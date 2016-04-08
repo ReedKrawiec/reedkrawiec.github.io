@@ -1,227 +1,79 @@
 <html>
 
-    <head>
-        <script src="scripts/jquery.min.js"></script>
-        <link rel="stylesheet" type="text/css" href="css/css2.css">
-        <link rel="stylesheet" type="text/css" href="css/fontello.css">
-        <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-        <title>Reed Krawiec</title>
-        <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    </head>
+<head>
+  <link rel="stylesheet" type="text/css" href="css/style.min.css">
+  <link rel="stylesheet" type="text/css" href="css/fontello.css">
+  <meta name=viewport content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Reed Krawiec</title>
+  <link href="images/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+</head>
 
-    <body>
-        <div id="Main_Info_Container">
-            <p id="top_bar_place_holder">:)</p>
-            <div id="dropdown" style="">
-                <div class="flex_container2">
-                    <p class="info" id="Page_1_Mobile">About Me</p>
-                    <p class="info" id="Page_2_Mobile">Project</p>
-                    <!-- <p class=" info" id="Page_3_Mobile">Blog</p>
-          -->
-                    <p class="info" id="Page_4_Mobile">Experience</p>
-                </div>
-            </div>
-            <div id="links_holder">
-                <div class="header_link" id="Page_1_link">
-                    <div id="Page_1_click" class="Info_Underline_Container fullopacity">
-                        <p class="info ">About Me</p>
-                        <div id="Page_1_Bar" class="bar fullwidth"></div>
-                    </div>
-                </div>
-                <div id="Page_2_link" class="header_link">
-                    <div id="Page_2_click" class="Info_Underline_Container">
-                        <p class="info">Projects</p>
-                        <div id="Page_2_Bar" class="bar"></div>
-                    </div>
-                </div>
-                <!-- if i ever need a page 3 again <div id="Page_3_link" class="header_link">
-        <div id="Page_3_click" class="Info_Underline_Container">
-          <p class="info">Blog</p>
-          <div id="Page_3_Bar" class="bar" ></div>
+<body>
+  <nav id="NavBar">
+
+  </nav>
+  <section id="Page_1">
+    <div id="Main_Container">
+      <div id="Main_Name_Container">
+        <p id="Page_1_Message">Hi, im Reed. I make and design <span id="message_word"> programs.</span><span id="cursor_bar">|</span>
+        </p>
+      </div>
+    </div>
+  </section>
+  <section class="section" id="About">
+    <p class="Section-Title">About Me</p>
+    <div class="About-Me-Head">
+      <div class="Wing">
+      </div>
+      <img class="About-Me-Image" src="https://avatars1.githubusercontent.com/u/12550372?v=3&s=460">
+      </img>
+      <div class="Wing">
+      </div>
+    </div>
+    <div class="paragraph-container">
+      <p class="paragraph">My name is Reed Krawiec, and I like to design software and websites. I hope you enjoy what you see. Feel free to contact me at reedkrawiec@gmail.com.</p>
+    </div>
+  </section>
+  <section class="section" id="projects">
+    <p class="Section-Title">Projects</p>
+    <div id="Projects_Hook"></div>
+  </section>
+  <section class="skills" id="skills">
+    <p class="Section-Title">Skills</p>
+    <div class="Language-List-Container">
+      <div class="Language-List">
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Experienced</p>
+            <ul>
+              <li>HTML5</li>
+              <li>CSS3</li>
+              <li>Javascript</li>
+              <li>JQuery</li>
+            </ul>
+          </section>
+        </div>
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Intermediate</p>
+            <ul>
+              <li>Node.js</li>
+            </ul>
+          </section>
+        </div>
+        <div class="Language-List-Section-Container">
+          <section class="Language-List-Section">
+            <p>Learning</p>
+            <ul>
+              <li>React</li>
+            </ul>
+          </section>
         </div>
       </div>
-    -->
-                <div id="Page_4_link" class="header_link">
-                    <div id="Page_4_click" class="Info_Underline_Container">
-                        <p class="info">Experience</p>
-                        <div id="Page_4_Bar" class="bar"></div>
-                    </div>
-                </div>
-                <div id="menu_click">
-                    <div class="icon-menu" id="menu" style=""></div>
-                </div>
-            </div>
-            <div id="topbar_left" class="flexxy">
-                <p>Reed Krawiec</p>
-                <div class="flexxy" id="stuffs"> <a href="mailto:reedkrawiec@gmail.com">
-                    <p class="icon-mail meme"></p>
-                  </a>
- <a href="http://github.com/reedkrawiec">
-                    <p class="icon-github meme"></p>
-                  </a>
- <a href="http://twitter.com/reedkrawiec">
-                    <p class="icon-twitter meme"></p>
-                  </a>
- <a href="/blog">
-                    <p class="icon-blogger meme" style="font-size:0.5em"></p>
-                  </a>
-
-                </div>
-            </div>
-        </div>
-        <div id="Page_1">
-            <div id="Main_Container">
-                <div id="Main_Name_Container">
-                    <p id="Page_1_Message">Hi, im Reed. I make and design <span id="message_word"> programs.</span><span id="cursor_bar">|</span>
-
-                    </p>
-                </div>
-            </div>
-        </div>
-        <div id="Page_2">
-
-            <div id="project_container">
-                <p id="Page_2_Large_Text">Projects I've Worked on</p>
-                <div class="flex_container project_hover"> <a href="Kappa-Klicker" class="project_link" id="project_1" >
-                          <div class="top_left">
-                              <p class="project_text">JQuery HTML CSS</p>
-                          </div>
-                          <div class="top_right">
-                              <p class="project_text">Front End</p>
-                          </div>
-                            <div class="bottom_left">
-                                <p class="project_text">Kappa Klicker</p>
-                            </div>
-                            <div class="bottom_right">
-                                <p class="project_text">A Cookie Clicker parody</p>
-                            </div>
-                            <div id="black_cover_1" class="black_cover"></div>
-                            <img id="project_1_background" class="project_background" src="images/KappaKlicker.png" />
-                      </a>
- <a href="Super-Duper-Bot/" class="project_link project_hover" id="project_2">
-                           <div class="top_left">
-                               <p class="project_text">JQuery HTML CSS Node.JS</p>
-                           </div>
-                           <div class="top_right">
-                               <p class="project_text">Full Stack</p>
-                           </div>
-                            <div class="bottom_left">
-                                <p class="project_text">Super Duper Bot</p>
-                            </div>
-                            <div class="bottom_right">
-                                <p class="project_text">Simple Twitch Bot</p>
-                            </div>
-                            <div id="black_cover_2" class="black_cover"></div>
-                            <img id="project_2_background" class="project_background" src="images/SDB.png" />
-                      </a>
-
-                </div>
-                <div class="flex_container"> <a href="http://tinyurl.com/pllister" class="project_link project_hover" id="project_3">
-                          <div class="top_left">
-                              <p class="project_text">JQuery HTML CSS</p>
-                          </div>
-                          <div class="top_right">
-                              <p class="project_text">Front End</p>
-                          </div>
-                            <div class="bottom_left">
-                                <p class="project_text">Playlister</p>
-                            </div>
-                            <div class="bottom_right">
-                                <p class="project_text">Song Saving Playlist</p>
-                            </div>
-                            <div id="black_cover_3" class="black_cover"></div>
-                            <img id="project_3_background" class="project_background" src="images/playlister.png" />
-                      </a>
- <a href="/SpotiDL" class="project_link project_hover" id="project_4">
-                           <div class="top_left">
-                               <p class="project_text">JQuery HTML CSS Node.Js</p>
-                           </div>
-                           <div class="top_right">
-                               <p class="project_text">Full Stack</p>
-                           </div>
-                            <div class="bottom_left">
-                                <p class="project_text">SpotiDL</p>
-                            </div>
-                            <div class="bottom_right">
-                                <p class="project_text">Locally Download Spotify Playlists</p>
-                            </div>
-                            <div id="black_cover_1" class="black_cover"></div>
-                            <img id="project_4_background" class="project_background" src="images/SpotiDL.png"/>
-                      </a>
-
-                </div>
-                <div class="flex_container" style="margin-bottom:10%">
-                <div class="flex_container project_hover" style="justify-content:flex-start" id="project_5"> <a id="project_5_linker" href="http://steamcomparer.tk" class="project_link">
-                                                <div class="top_left">
-                                                    <p class="project_text">JQuery HTML CSS Node.Js</p>
-                                                </div>
-                                                <div class="top_right">
-                                                    <p class="project_text">Full Stack</p>
-                                                </div>
-                                                 <div class="bottom_left">
-                                                     <p class="project_text">Steam Comparer</p>
-                                                 </div>
-                                                 <div class="bottom_right">
-                                                     <p class="project_text">Compare people's owned games</p>
-                                                 </div>
-                                                 <div id="black_cover_5" class="black_cover"></div>
-                                                 <img id="project_5_background" class="project_background" src="images/steam-comparer.png" />
-                                           </a>
-
-                </div>
-                <div class="flex_container project_hover" style="justify-content:flex-start" id="project_6"> <a id="project_6_linker" href="https://alpha-dev.github.io" class="project_link">
-                                                <div class="top_left">
-                                                    <p class="project_text">JQuery HTML CSS</p>
-                                                </div>
-                                                <div class="top_right">
-                                                    <p class="project_text">Front End</p>
-                                                </div>
-                                                 <div class="bottom_left">
-                                                     <p class="project_text">Alpha Dev</p>
-                                                 </div>
-                                                 <div class="bottom_right">
-                                                     <p class="project_text">Group</p>
-                                                 </div>
-                                                 <div id="black_cover_6" class="black_cover"></div>
-                                                 <img id="project_6_background" class="project_background" src="images/alpha-dev.png" />
-                                           </a>
-
-                </div>
-            </div>
-          </div>
-        </div>
-        <div id="Page_3">
-            <div id="Blog_nav_bar">
-                <p id="blog_home">Home</p>
-            </div>
-            <iframe id="blog_frame" src="https://reedkrawiec.github.io/blog" frameBorder="0"></iframe>
-        </div>
-        <div id="Page_4">
-            <div id="Page_4_main">
-                <p>Languages</p>
-                <div id="languages_container">
-                    <div class="language_box" id="language_box_1">
-                        <p>&lt html &gt</p>
-                        <p>.css</p>
-                    </div>
-                    <div class="language_box" id="language_box_2">
-                        <p>Javascript{}</p>
-                        <p>$("#JQuery")</p>
-                    </div>
-                    <div class="language_box" id="language_box_3">
-                        <p>Node.Js</p>
-                    </div>
-                </div>
-                <p id="coding_with_text">Coding with for <span id="actual_coding_time">8 months</span>
-                </p>
-                <div id="expbar_container">
-                    <div id="expbar_real">
-                        <p id="expbar_text">Skill</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </body>
-    <script src="scripts/background.js"></script>
+    </div>
+  </section>
+  <script src="script/jquery.min.js"></script>
+  <script src="script/bundled.min.js"></script>
+</body>
 
 </html>
