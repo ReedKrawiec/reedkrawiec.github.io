@@ -25,4 +25,13 @@ $section-text-shadow:#003300;
       }
     }
   }
+  @include Media(768px){
+      .Language-List{
+        height:1000px;
+        flex-direction: column;
+        .Language-List-Section-Container{
+          width:100%;
+        }
+      }
+  }
 }

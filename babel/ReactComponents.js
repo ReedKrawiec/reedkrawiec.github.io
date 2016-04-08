@@ -46,11 +46,11 @@ export class NavBar extends React.Component{
             <p>About Me</p>
             <div className="bar"></div>
           </a>
-          <a className="Desktop-Nav-Bar-Item" href="#About">
+          <a className="Desktop-Nav-Bar-Item" href="#projects">
             <p>Projects</p>
             <div className="bar"></div>
           </a>
-          <a className="Desktop-Nav-Bar-Item" href="#About">
+          <a className="Desktop-Nav-Bar-Item" href="#skills">
             <p>Skills</p>
             <div className="bar"></div>
           </a>
