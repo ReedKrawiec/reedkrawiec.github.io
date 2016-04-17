@@ -56,4 +56,4 @@ console.log(x);
 
 setTimeout(function(){
   setScreen(x,0);
-},500);
+},3000);
