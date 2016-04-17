@@ -17,15 +17,16 @@ var j = [1,2,3,4,5];
 
 function setScreen(f,counter){
 //  console.log(f[counter] +" "+ f + " " + counter);
-  $("html").css("background-color",color2);
+console.log(f);
+  $("html").css("background-color",color1);
   if(f[counter] === "0"){
-    $("#number").text("0").css("color",color1);
+    $("#number").text("0").css("color",color2);
     $("#overlay").css("display","initial");
-    console.log(color1);
+    console.log(color2);
   }
   else{
     $("#overlay").css("display","none");
-    console.log(color2);
+    console.log(color1);
   }
   setTimeout(function(){
     $("#overlay").css("display","none");
@@ -39,8 +40,8 @@ function setScreen(f,counter){
         $("html").css("background-color","blue");
         $("#number").css("display","none");
       }
-    },100);
-  },100);
+    },1000);
+  },1000);
 }
 
 function FromBinary(y) {
