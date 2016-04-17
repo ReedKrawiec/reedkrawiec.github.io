@@ -40,8 +40,8 @@ console.log(f);
         $("html").css("background-color","blue");
         $("#number").css("display","none");
       }
-    },100);
-  },100);
+    },150);
+  },150);
 }
 
 function FromBinary(y) {
