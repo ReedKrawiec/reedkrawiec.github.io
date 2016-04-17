@@ -40,8 +40,8 @@ console.log(f);
         $("html").css("background-color","blue");
         $("#number").css("display","none");
       }
-    },400);
-  },400);
+    },200);
+  },200);
 }
 
 function FromBinary(y) {
@@ -50,7 +50,7 @@ function FromBinary(y) {
     });
   }
 
-var z = prompt("meme");
+var z = prompt("Enter a word to transfer");
 var x = textToBin(z).replace(/ /g,"");
 console.log(x);
 
