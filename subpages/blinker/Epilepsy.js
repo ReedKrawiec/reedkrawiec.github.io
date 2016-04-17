@@ -9,7 +9,7 @@ function textToBin(text) {
 }
 
 var color1 = "red";
-var color2 = "green";
+var color2 = "rgba(75,255,75,1)";
 var color3 = "blue";
 
 console.log(window.Bases);
