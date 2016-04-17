@@ -39,8 +39,8 @@ function setScreen(f,counter){
         $("html").css("background-color","yellow");
         $("#number").css("display","none");
       }
-    },10);
-  },10);
+    },100);
+  },100);
 }
 
 function FromBinary(y) {
