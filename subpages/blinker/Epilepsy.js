@@ -36,7 +36,7 @@ function setScreen(f,counter){
         setScreen(f,counter+1);
       else {
         console.log("yellow");
-        $("html").css("background-color","yellow");
+        $("html").css("background-color","blue");
         $("#number").css("display","none");
       }
     },100);
