@@ -8,33 +8,39 @@ function textToBin(text) {
   return output.join(" ");
 }
 
+var color1 = "red";
+var color2 = "green";
+var color3 = "blue";
+
 console.log(window.Bases);
 var j = [1,2,3,4,5];
 
 function setScreen(f,counter){
 //  console.log(f[counter] +" "+ f + " " + counter);
-  $("html").css("background-color","white");
+  $("html").css("background-color",color2);
   if(f[counter] === "0"){
-    $("#number").text("0").css("color","white");
+    $("#number").text("0").css("color",color1);
     $("#overlay").css("display","initial");
+    console.log(color1);
   }
   else{
     $("#overlay").css("display","none");
-    $("#number").text("1").css("color","black");
+    console.log(color2);
   }
   setTimeout(function(){
     $("#overlay").css("display","none");
-    $("#number").text("1").css("color","black");
     $("html").css("background-color","blue");
+    console.log("blue");
     setTimeout(function(){
       if(counter+1 < f.length)
         setScreen(f,counter+1);
       else {
-        $("html").css("background-color","green");
+        console.log("yellow");
+        $("html").css("background-color","yellow");
         $("#number").css("display","none");
       }
-    },100);
-  },100);
+    },10);
+  },10);
 }
 
 function FromBinary(y) {
