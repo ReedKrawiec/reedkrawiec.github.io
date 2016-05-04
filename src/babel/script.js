@@ -1,6 +1,7 @@
-import {firstpage} from "./FirstPage.js";
-import * as Projects from "./ProjectsData.js" ;
-import {ProjectComponent,ProjectContainer,NavBar} from "./ReactComponents.js";
+import {firstpage} from "./imports/FirstPage.js";
+import * as Projects from "./imports/ProjectsData.js" ;
+import {ProjectComponent,ProjectContainer,NavBar} from "./imports/ReactComponents.js";
+import {SkillContainer} from "./imports/ReactComponents.js";
 import React from 'react';
 import {render} from 'react-dom';
 
@@ -8,6 +9,7 @@ let Projects_Array = Projects.default;
 
 render(<ProjectContainer projects={Projects_Array} />,document.getElementById("Projects_Hook"));
 render(<NavBar/>,document.getElementById("NavBar"));
+render(<SkillContainer/>,document.getElementById("tech-container-mount"));
 firstpage();
 $(function() {
   $('a[href*="#"]:not([href="#"])').click(function() {

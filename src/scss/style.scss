@@ -1,10 +1,10 @@
-@import "Mixins";
-@import "Normalize";
-@import 'legacy';
-@import 'Project';
-@import 'AboutMe';
-@import 'Skill';
-@import 'NavBar';
+@import "imports/Mixins";
+@import "imports/Normalize";
+@import 'imports/legacy';
+@import 'imports/Project';
+@import 'imports/AboutMe';
+@import 'imports/Skill';
+@import 'imports/NavBar';
 
 * {
   box-sizing:border-box;
