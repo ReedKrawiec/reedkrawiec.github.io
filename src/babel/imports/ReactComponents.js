@@ -6,62 +6,79 @@ let tech = [
     {
        "name":"React",
        "image":"react.svg",
-       "skill":"Moderate"
+       "skill":"Moderate",
+       "orient":"resizeX"
     },
     {
        "name":"HTML5",
        "image":"HTML5_Logo_512.png",
-       "skill":"Experienced"
+       "skill":"Experienced",
+       "orient":"resizeX"
     },
     {
        "name":"CSS3",
        "image":"css3.png",
-       "skill":"Experienced"
+       "skill":"Experienced",
+       "orient":"resizeY"
     },
     {
        "name":"Javascript",
        "image":"logo_JavaScript.png",
-       "skill":"Experienced"
+       "skill":"Experienced",
+       "orient":"resizeX"
     }
   ],
   [
     {
        "name":"NodeJS",
        "image":"nodejs-logo.png",
-       "skill":"Moderate"
+       "skill":"Moderate",
+       "orient":"resizeX"
     },
     {
        "name":"Python",
        "image":"1024px-Python-logo-notext.svg.png",
-       "skill":"Basic"
+       "skill":"Basic",
+       "orient":"resizeX"
     },
     {
        "name":"PHP",
        "image":"2000px-PHP-logo.svg.png",
-       "skill":"Basic"
+       "skill":"Basic",
+       "orient":"resizeX"
     },
     {
        "name":"SQL",
        "image":"sql-logo.png",
-       "skill":"Moderate"
+       "skill":"Moderate",
+       "orient":"resizeX"
     }
   ],
   [
     {
        "name":"SASS",
        "image":"logo-b6e1ef6e.svg",
-       "skill":"Experienced"
+       "skill":"Experienced",
+       "orient":"resizeX"
     },
     {
        "name":"Babel",
        "image":"babel.png",
-       "skill":"Moderate"
+       "skill":"Moderate",
+       "orient":"resizeX"
     },
     {
        "name":"Gulp",
        "image":"gulp-2x.png",
-       "skill":"Moderate"
-    }
+       "skill":"Moderate",
+       "orient":"resizeY"
+    },
+    {
+       "name":"Webpack",
+       "image":"webpack.svg",
+       "skill":"Moderate",
+       "orient":"resizeY"
+     }
   ]
 ];
 
@@ -143,7 +160,7 @@ class SkillBody extends React.Component{
   render(){
     let arr = [];
     for(let x = 0;x<this.props.data.length;x++){
-      arr.push(<Skill data={this.props.data[x]} />);
+      arr.push(<div className="HalfWidth"><Skill data={this.props.data[x]} /></div>);
     }
     return(
       <div className="tech-body">
@@ -155,15 +172,7 @@ class SkillBody extends React.Component{
 
 class Skill extends React.Component{
   render(){
-    let imageObj = new Image();
-    imageObj.src = "./images_prod/"+this.props.data.image;
-    let imageClasses = "tech-body-skill-img";
-    if(imageObj.height>imageObj.width){
-      imageClasses+=" resizeY";
-    }
-    else{
-      imageClasses+=" resizeX";
-    }
+    let imageClasses = "tech-body-skill-img "+this.props.data.orient;
     return(
       <div className="tech-body-skill-container">
         <div className="tech-body-skill-img-container">
