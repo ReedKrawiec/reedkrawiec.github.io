@@ -35,6 +35,7 @@ let tech = [
        "skill":"Moderate",
        "orient":"resizeX"
     },
+    /*
     {
        "name":"Python",
        "image":"1024px-Python-logo-notext.svg.png",
@@ -47,6 +48,7 @@ let tech = [
        "skill":"Basic",
        "orient":"resizeX"
     },
+    */
     {
        "name":"SQL",
        "image":"sql-logo.png",

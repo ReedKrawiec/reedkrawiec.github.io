@@ -62,11 +62,16 @@ $tech-body-skill-text-shadow:2px 2px #002e3d;
           width:250px;
           @include CenterFlex;
         }
+        img{
+          visibility: hidden;
+        }
         .resizeY{
+          visibility: inherit;
           height:225px;
           width:auto;
         }
         .resizeX{
+          visibility: inherit;
           width:225px;
           height:auto;
         }
