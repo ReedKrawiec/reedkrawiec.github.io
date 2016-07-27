@@ -1,83 +1,101 @@
-var gulp = require('gulp'),
-    sass = require('gulp-sass'),
-    cssnano = require('gulp-cssnano'),
-    webpack = require('gulp-webpack'),
-    autoprefixer = require('gulp-autoprefixer'),
-    image = require('gulp-image'),
-    pug = require('gulp-pug'),
-    plumber = require('gulp-plumber'),
-    handlebars = require('gulp-compile-handlebars'),
-    rename = require("gulp-rename");
+'use strict'
+let gulp = require('gulp');
+let rename = require('gulp-rename');
+let sourcemaps   = require('gulp-sourcemaps');
+let connect = require('gulp-connect')
 
-var onError = function(err){
-  console.log(err);
-};
+let css_path = "src/css/*.*";
+let css_path_final = 'public/assets/css';
 
-gulp.task('js',()=> {
-  var name_holder;
-  return gulp.src(['src/babel/*.*'])
-      .pipe(plumber({
-        errorHandler: onError
-      }))
-      .pipe(rename(function (path) {
-        name_holder = path.basename;
-      }))
-      .pipe(webpack(require ('./webpack.config.js')))
-      .pipe(rename(function (path) {
-        path.basename = name_holder+".min";
-      }))
-      .pipe(gulp.dest('public/script'));
-});
-gulp.task('sass', ()=>{
-  return gulp.src('src/scss/*.scss')
-    .pipe(plumber({
-      errorHandler: onError
-    }))
-    .pipe(sass()) // Converts Sass to CSS with gulp-sass
-    .pipe(autoprefixer({
-        browsers: ['last 2 versions'],
-        cascade: false
-    }))
-    .pipe(cssnano())
-    .pipe(rename((path)=>{
-      path.basename += ".min";
-    }))
-    .pipe(gulp.dest('public/css'));
-});
-gulp.task("html",()=>{
+let js_path = "src/scripts/*.*";
+let js_path_final = "public/assets/scripts";
 
-  var templateData = {
-  firstName: 'Kaanon'
-},
-options = {
-  ignorePartials: true, //ignores the unknown footer2 partial in the handlebars template, defaults to false
-  partials : {
-    footer : '<footer>the end</footer>'
-  },
-  batch : ['./src/hbs_partials'],
-  helpers : {
-
-  }
-};
-return gulp.src('src/**/**.hbs')
-  .pipe(plumber({
-    errorHandler: onError
-  }))
-  .pipe(handlebars(templateData, options))
+let html_path = "src/**/*.html";
+let html_path_final = 'public';
+gulp.task('css',function(){
+  let postcss      = require('gulp-postcss');
+  let autoprefixer = require('autoprefixer');
+  let sass = require('gulp-sass');
+  let cssnano = require('cssnano')
+  return gulp.src(css_path)
   .pipe(rename((path)=>{
-    path.extname=".html";
+    path.basename += ".min";
   }))
-  .pipe(gulp.dest('public'));
-});
-gulp.task('image_optimization', () => {
-	return gulp.src('src/images_dev/*.*')
-		.pipe(image())
-		.pipe(gulp.dest('public/images_prod'));
-});
-gulp.task('default',['js','sass','html']);
+  .pipe(sourcemaps.init())
+  .pipe(sass())
+  .pipe(postcss([ autoprefixer({ browsers: ['last 2 versions'] }) , cssnano()]))
+  .pipe(sourcemaps.write("."))
+  .pipe(gulp.dest(css_path_final))
+  .pipe(connect.reload());
+})  
+
+gulp.task('html',function(){
+  return gulp.src(html_path)
+  .pipe(gulp.dest(html_path_final))
+  .pipe(connect.reload());
+})
+
+gulp.task('js',function(){
+  let gulp_webpack = require('gulp-webpack');
+  let webpack = require("webpack");
+
+  gulp_webpack({
+      devtool:"source-map",
+      resolve: {
+        extensions: ['', '.webpack.js', '.web.js', '.ts','.tsx', '.js'],
+      },
+      entry: {
+        main: __dirname + "/src/scripts/main.tsx"
+      },
+      output: {
+          path: __dirname + "/public/scripts",
+          filename: "[name].min.js"
+      },
+      plugins: [
+          new webpack.optimize.UglifyJsPlugin({
+              mangle:true
+          }),
+          new webpack.DefinePlugin({
+            "process.env": {
+              NODE_ENV: JSON.stringify("production")
+            }
+          })
+        ],
+      module: {
+        loaders: [
+          {
+            test: /\.scss$/,
+            loaders: [
+                'style',
+                'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]',
+                'sass'
+            ]
+          },
+          { test: /\.ts$|\.tsx$/, loader: 'ts-loader' },
+          {
+            test: /\.jsx?$|\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel', // 'babel-loader' is also a legal name to reference
+            query: {
+              presets: ['react', 'es2015']
+            }
+          }
+        ]
+      }
+    })
+    .pipe(gulp.dest(js_path_final))
+    .pipe(connect.reload());
+})
+
+gulp.task('default',["js","html","css"])
 
 gulp.task('watch',()=>{
-  gulp.watch('src/scss/**/**.scss',['sass']);
-  gulp.watch('src/babel/**/**.*',["js"]);
-  gulp.watch('src/**/**.hbs',['html']);
+  gulp.watch('src/css/**/**.scss',['css']);
+  gulp.watch('src/scripts/**/**.*',["js"]);
+  gulp.watch('src/**/**.html',['html']);
+  gulp.watch('src/assets/**/**.**',['move_assets']);
+  connect.server({
+    root: 'public',
+    livereload: true
+  });
 });
