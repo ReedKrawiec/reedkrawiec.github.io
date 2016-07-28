@@ -137,6 +137,11 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
                <p className="column__text">reedkrawiec.github.io</p>
               </section>
               <section>
+                <p className="column__heading">About Me</p>
+                <div className="underline"></div>
+                <p className="column__text column__text-aboutme">I am a young web developer with a passion for creating great, interactive websites. I have been working with web technologies since 2014, and will be teaching Front-End development to students at my school.</p>
+              </section>
+              <section>
                 <p className="column__heading">Languages</p>
                 <div className="underline"></div>
                 <ul>
@@ -146,6 +151,8 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
                   <li>Python</li>
                 </ul>
               </section>
+            </div>
+            <div className="resume__column">
               <section>
                 <p className="column__heading">Technologies</p>
                 <div className="underline"></div>
@@ -156,8 +163,6 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
                   <li>Typescript</li>
                 </ul>
                </section> 
-            </div>
-            <div className="resume__column">
               <section>
                 <p className="column__heading">Projects</p>
                 <div className="underline"></div>
@@ -179,11 +184,6 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
                     </div>
                    </li> 
                 </ul>   
-              </section>
-              <section>
-                <p className="column__heading">About Me</p>
-                <div className="underline"></div>
-                <p className="column__text">I am a young web developer with a passion for creating great, interactive websites. I have been working with web technologies since 2014, and will be teaching Front-End development to students at my school.</p>
               </section>
             </div>
           </div>

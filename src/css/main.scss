@@ -38,6 +38,7 @@ a{
         text-align: center;
         color:#181818;
         background-color:#f2f2f2;
+
       }
       &.active{
         z-index:3;
@@ -116,6 +117,7 @@ a{
     width:100%;
     position:absolute;
     left:0px;
+    min-height:2em;
     top:0px;
     color:white;
     z-index:2;
@@ -143,7 +145,7 @@ a{
   }
   .page__content{
     pointer-events: none;
-    overflow:auto;
+    overflow:hidden;
     height:100%;
     position:relative;
     width:100%;
@@ -151,12 +153,18 @@ a{
     .placeholder{
       height:5%;
       width:100%;
+      min-height:2em;
     }
     .center{
       position:absolute;
       left:50%;
       top:50%;
       transform:translateX(-50%) translateY(-50%);
+      @include Media(768px){
+        left:0px;
+        top:2em;
+        transform:initial;
+      }
     }
   }
   .page__title{
@@ -191,6 +199,7 @@ a{
     width:100vw;
     cursor: initial;
     .page__content{
+      overflow:auto;
       pointer-events: initial;
     }
     .page__navbar{
@@ -223,6 +232,12 @@ a{
           font-size:.7em;
         }
       }
+      .column__text-aboutme{
+        width:50%;
+        @include Media(768px){
+          width:100%;
+        }
+      }
       .column__text{
         margin-left:1em;
         font-size:.5em;
@@ -240,7 +255,14 @@ a{
       font-size:.7em;
       list-style-type: initial;
     }
+    @include Media(768px){
+      width:100%;
+      height:initial;
+    }
   }
+  @include Media(768px){
+      flex-direction: column;
+    }
 }
 .page__projects{
   color:#5c5c5c;
@@ -271,6 +293,9 @@ a{
       .textcontainer__link{
         margin-right:.6em;
         color:skyblue;
+      }
+      @include Media(768px){
+        font-size:.5em;
       }
     }
     @include Media(1000px){
