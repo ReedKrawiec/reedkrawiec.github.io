@@ -6,6 +6,7 @@
 
 html{
   font-family:"coolvetica";
+  transform:translateZ(0)
 }
 
 a{
@@ -249,9 +250,6 @@ a{
     margin:10px;
   }
   .project{
-    &:nth-of-type(odd){
-      flex-direction: row-reverse;
-    }
     margin:1em;
     background-color:#5c5c5c;
     display:flex;
@@ -260,12 +258,12 @@ a{
     .project__imagecontainer{
       width:40%;
       .imagecontainer__image{
+        width:calc(100% - 2em);
         margin:1em;
-        width:100%;
         height:auto;
       }
     }
-    .project_textcontainer{
+    .project__textcontainer{
       color:#f2f2f2;
       background-color:#262626;
       padding:1em;
@@ -273,6 +271,15 @@ a{
       .textcontainer__link{
         margin-right:.6em;
         color:skyblue;
+      }
+    }
+    @include Media(1000px){
+      flex-direction: column;
+      .project__imagecontainer{
+        width:100%;
+      }
+      .project__textcontainer{
+        width:100%;
       }
     }
   }

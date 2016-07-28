@@ -2,7 +2,7 @@
 let gulp = require('gulp');
 let rename = require('gulp-rename');
 let sourcemaps   = require('gulp-sourcemaps');
-let connect = require('gulp-connect')
+let connect = require('gulp-connect');
 
 let css_path = "src/css/*.*";
 let css_path_final = 'public/assets/css';
@@ -12,6 +12,18 @@ let js_path_final = "public/assets/scripts";
 
 let html_path = "src/**/*.html";
 let html_path_final = 'public';
+
+let images_path = "src/images/*.*";
+let images_path_final = "public/assets/images_prod";
+
+gulp.task('images', function(cb) {
+  let imageop = require('gulp-image-optimization');
+    return gulp.src(images_path).pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest(images_path_final))
+})
 gulp.task('css',function(){
   let postcss      = require('gulp-postcss');
   let autoprefixer = require('autoprefixer');
