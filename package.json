@@ -19,5 +19,13 @@
     "react-dom": "^15.2.1",
     "ts-loader": "^0.8.2",
     "typescript": "^2.0.0"
-  }
+  },
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": {
+    "url": "https://github.com/ReedKrawiec/reedkrawiec.github.io.git",
+    "type": "git"
+  },
+  "author": "ReedKrawiec <reedkrawiec@gmail.com>",
+  "license": "MIT"
 }
