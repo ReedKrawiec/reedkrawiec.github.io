@@ -180,6 +180,7 @@ a{
     animation-delay: 1s;
     background-color:#262626;
     animation-fill-mode: forwards;
+    width:100%;
     z-index: 2;
     &.hidden{
       animation: hide 1s ease-in-out;
@@ -271,6 +272,12 @@ a{
     text-align: center;
     margin:10px;
   }
+  .librarycontainer{
+    display:flex;
+    justify-content: center;
+    align-items:flex-start;
+    flex-wrap:wrap;
+  }
   .project{
     margin:1em;
     background-color:#5c5c5c;
@@ -285,12 +292,16 @@ a{
         height:auto;
       }
     }
+     .textcontainer__linkcontainer{
+        margin-top:.5em;
+      }  
     .project__textcontainer{
       color:#f2f2f2;
       background-color:#262626;
       padding:1em;
+      margin:1em;
       width:40%;
-      .textcontainer__link{
+     .textcontainer__link{
         margin-right:.6em;
         color:skyblue;
       }
@@ -309,7 +320,53 @@ a{
     }
   }
 }
+.library{
+  width:80%;  
+ .library__textcontainer{
+      color:#f2f2f2;
+      background-color:#262626;
+      padding:1em;
+      margin:1em;
+      width:80%;
+       .textcontainer__link{
+        margin-right:.6em;
+        color:skyblue;
+      }
+      @include Media(768px){
+        font-size:.5em;
+      }
+    }  
+}
+.project__selector{
+  margin:1em;
+  background-color:#5c5c5c; 
+  width:calc(100% - 2em);
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  align-items:center;
+  .selector__button{
+    padding:.5em;
+    margin:.5em;
+    width:calc(33% - 1em);
+    color:#f2f2f2;
+    background-color:#262626;   
+    cursor:pointer;
+    transition:color .25s;
+    transition:background-color .25s;
+    &:hover{
+      background-color:white;
+      color:black;
+    }
+  }
+  @include Media(1000px){
+    .selector__button{
+      font-size:3.5vw;
+    }
+  }
+}
 .page__profile{
+  width:100%;
   color:#424254;
   p{
     margin:1em;
@@ -340,6 +397,15 @@ a{
       margin:1em;
       width:5em;
     }
+  }
+}
+
+.blink {
+  animation: blink-animation 1s steps(5, start) infinite;
+}
+@keyframes blink-animation {
+  to {
+    visibility: hidden;
   }
 }
 

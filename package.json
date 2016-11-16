@@ -15,6 +15,7 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-webpack": "^1.5.0",
     "node-sass": "^3.8.0",
+    "optipng-bin": "^3.1.2",
     "react": "^15.2.1",
     "react-dom": "^15.2.1",
     "ts-loader": "^0.8.2",
