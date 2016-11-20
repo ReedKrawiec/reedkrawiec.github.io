@@ -279,7 +279,8 @@ class ProjectNav extends React.Component<NoProps,ProjectNavState>{
     if(this.state.currentProjectType === 0){
       projects = <div>
         <Project name="Star" desc="Star is a simple theme that I designed for personal use with the Jekyll static blog system. The theme is free for use however." demo="https://reedkrawiec.github.io/Star/" github="https://github.com/reedkrawiec/Star" image="assets/images_prod/starblog.png"/>
-        <Project name="Space Scroller" desc="Space Scroller is an image gallery that grabs new pictures as the user scrolls, creating an infinite scrolling experience, made to practice using the Flask framework for Python." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/reedkrawiec/SpaceScroller" image="assets/images_prod/spacescroller.png"/>   
+        <Project name="Kappa Klicker" desc="Kappa Klicker is a cookie clicker parody, recently re-coded using React and Redux" demo="https://reedkrawiec.github.io/Kappa-Klicker" github = "https://github.com/reedkrawiec/kappa-klicker" image="assets/images_prod/kappaklicker.png"/>   
+        <Project name="Space Scroller" desc="Space Scroller is an image gallery that grabs new pictures as the user scrolls, creating an infinite scrolling experience, made to practice using the Flask framework for Python." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/reedkrawiec/SpaceScroller" image="assets/images_prod/spacescroller.png"/>  
       </div>
     }
     else if(this.state.currentProjectType === 1){
@@ -358,6 +359,5 @@ for(let a = 0;a<elements.length;a++){
   elements[a].addEventListener("click",(e)=>{
     let element:any = elements[a];
     element.style.zIndex = 99;
-    console.log("hi");
   })
 }
