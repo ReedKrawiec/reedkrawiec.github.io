@@ -1,8 +1,8 @@
-/// <reference path="../../typings/index.d.ts" />
+  /// <reference path="../../typings/index.d.ts" />
 import * as React from 'react';
 import {render} from 'react-dom';
 import TyperWrapper from "./typer.tsx";
-
+import If from "./if.tsx";
 interface NoProps {}
 interface NoState {}
 
@@ -20,7 +20,7 @@ interface NavMenuState{
 }
 
 interface setActiveNavBoxInterface{
-  (activeKey: number,hash:string): void;
+  (activeKey: number,hash:string,toUpdate?:boolean): void;
 }
 
 interface NavBoxState{
@@ -28,8 +28,10 @@ interface NavBoxState{
 }
 
 interface toMenu{
-  (ident?:number,hash?:string):void
+  (ident?:number,hash?:string,delay?:number):void
 }
+
+let setActive:any;
 
 class NavMenu extends React.Component<NoProps,NavMenuState>{
   pageContents:any
@@ -59,24 +61,36 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
       activeArray:[false,false,false,true],
       };  
     this.setActiveNavBox = this.setActiveNavBox.bind(this);
+    setActive = this.setActiveNavBox;
     this.toMenu = this.toMenu.bind(this);
     this.pageContents = {
       box1:{
         content:(
-          <div>
-            <div className="placeholder"></div>
-              <div className="page__profile center">
-                <p className="profile__name"><TyperWrapper words={["Hello!","Bonjour!","你好!","Kamusta!","Cześć!","こんにちは!","नमस्ते!"]} delay={5000} /><span className="blink">|</span> I'm Reed.</p>
-                <p className="profile__tagline">I like to develop websites.</p>
-                <p className="profile__icons">
-                  <a href="https://github.com/reedkrawiec" className="icon-github-1"></a>
-                  <a href="https://twitter.com/reedkrawiec" className="icon-twitter-1"></a>
-                  <a href="mailto:reedkrawiec@gmail.com" className="icon-mail-1"></a>
-                  <a href="https://codepen.io/reedkrawiec/" className="icon-codepen"></a>
-                </p>
-                <p className="profile__links"><span onClick={()=>{this.toMenu(1,"projects")}}>Projects</span><span onClick={()=>{this.toMenu(2,"resume")}}>Resume</span><span onClick={()=>{this.toMenu(3,"blog")}}>Blog</span></p>
+            <div className="lander">
+              <p className="lander__text--medium lander__typer">
+                <TyperWrapper words={["Hello!","Bonjour!","你好!","Kamusta!","Cześć!","今日は!","नमस्ते!"]} delay={5000} /> <span className="blink">|</span>
+              </p>
+              <p className="lander__text--medium">I'm Reed.</p>
+              <p className="lander__text--small">I like to build user interfaces.</p>
+              <p className="lander__text--small icons">
+                <a href="https://github.com/reedkrawiec" className="icon-github-1"></a>
+                <a href="https://twitter.com/reedkrawiec" className="icon-twitter-1"></a>
+                <a href="mailto:reedkrawiec@gmail.com" className="icon-mail-1"></a>
+                <a href="https://codepen.io/reedkrawiec" className="icon-codepen"></a>
+              </p>
+              <div className="lander__buttons">
+                  <div className="button__container" onClick={()=>{this.toMenu(1,"projects",700)}}>
+                    <div className="button__text">Projects</div>
+                  </div>
+                  <div className="button__container" onClick={()=>{this.toMenu(2,"resume",700)}}>
+                    <div className="button__text">Resume</div>
+                  </div>
+                  <div className="button__container" onClick={()=>{this.toMenu(3,"blog",700)}}>
+                    <div className="button__text">Blog</div>
+                  </div>
               </div>
-            </div> ),
+            </div>
+          ),
           title:"Profiles",
           hash:"profiles",
           navclass:"page__navbar--green"
@@ -93,68 +107,27 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
         content:(
           <div>
             <div className="placeholder"></div>
-            <div className="page__resume">
-              <div className="resume__column">
-                <section>
-                <p className="column__heading">Reed Krawiec</p>
-                <div className="underline"></div>
-                <p className="column__text">reedkrawiec@gmail.com</p>
-                <p className="column__text">reedkrawiec.github.io</p>
-                </section>
-                <section>
-                  <p className="column__heading">About Me</p>
-                  <div className="underline"></div>
-                  <p className="column__text column__text-aboutme">I am a young web developer with a passion for creating great, interactive websites.</p>
-                </section>
-                <section>
-                  <p className="column__heading">Languages</p>
-                  <div className="underline"></div>
-                  <ul>
-                    <li>Javascript</li>
-                    <li>HTML</li>
-                    <li>CSS</li>
-                    <li>Python</li>
-                  </ul>
-                </section>
-              </div>
-              <div className="resume__column">
-                <section>
-                  <p className="column__heading">Frameworks / Tools</p>
-                  <div className="underline"></div>
-                  <ul>
-                    <li>React</li>
-                    <li>Flask</li>
-                    <li>SASS</li>
-                    <li>Typescript</li>
-                  </ul>
-                </section> 
-                <section>
-                  <p className="column__heading">Projects</p>
-                  <div className="underline"></div>
-                  <ul>
-                    <li>
-                      <div className="column__project">
-                        <p className="project__projectheading">Star</p>
-                        <p className="project__text">HTML, SASS(CSS), Typescript(Javascript)</p>
-                        <div className="underline"></div>
-                        <p className="project__text">Free for use jekyll theme.</p>
-                      </div>
-                    </li> 
-                    <li>
-                      <div className="column__project">
-                        <p className="project__projectheading">SpaceScroller</p>
-                        <p className="project__text">HTML, SASS(CSS), Typescript(Javascript), Flask(Python)</p>
-                        <div className="underline"></div>
-                        <p className="project__text">Infinite scrolling gallery of space pictures.</p>
-                      </div>
-                    </li> 
-                  </ul>   
-                </section>
-              </div>
+            <div className="page__info">
+              <section className="info__section info__bio">
+                <div className="info__header">
+                  About me
+                </div>
+              </section>
+              <section className="info__section info__languages">
+                <div className="info__header">
+                  Languages
+                </div>
+              </section>
+              <section className="info__section info__tools">
+                <div className="info__header">
+                  Tools
+                </div>
+              </section>
             </div>
-          </div> ),
-        title:"Resume",
-        hash:"resume",
+          </div> 
+        ),
+        title:"Contact Me",
+        hash:"contact",
         navclass:"page__navbar--brown"
       },
        
@@ -165,26 +138,37 @@ class NavMenu extends React.Component<NoProps,NavMenuState>{
           </div> ),
         title:"Blog",
         hash:"blog",
-        redirectlink:"http://reedkrawiec.github.io/blog",
-        navclass:"page__navbar--none"
+        navclass:"page__navbar--indigo"
       }
       
     }  
    }
-  public toMenu(ident:number,hash:string):void{
-    history.replaceState(undefined, undefined,  "#menu");
+  public toMenu(ident:number,hash:string,delay:number):void{
+    
+    history.replaceState(history.state,undefined,"");
     this.setState({activeArray:[false,false,false,false]});
-    if(hash!==undefined)
-      this.setActiveNavBox(ident,hash)
+    if(delay === undefined)
+      delay = 0;
+    if(hash!==undefined){
+      setTimeout(()=>{this.setActiveNavBox(ident,hash)},delay)
+    }
   }
-  public setActiveNavBox(activeKey:number,hash:string):void{
-    history.replaceState(undefined, undefined,  "#"+hash);
+  public setActiveNavBox(activeKey:number,hash:string,DoNotUpdateHistory?:boolean):void{
+    let x = DoNotUpdateHistory || false;
+    let state_to_push = {
+          hash:hash,
+          key:activeKey};
+    if(!x){
+      console.log(state_to_push);
+      history.pushState(state_to_push,"page 2", "#"+hash);
+    }
+    else
+      console.log("not update");
     let newActiveArray = [false,false,false,false];
     newActiveArray[activeKey] = true;
     this.setState({activeArray:newActiveArray});
   }
   public render(){
-
     return(
       <div className="fullnavmenu">
         <NavBox key={0} ident={0} changeActive={this.setActiveNavBox} toMenu={this.toMenu} inside = {this.pageContents.box1} activeArray={this.state.activeArray} />
@@ -200,25 +184,30 @@ interface ProjectProps{
   desc:string,
   demo?:string,
   github:string,
-  image:string
+  image?:string
 }
 
 const Project = (props:ProjectProps)=>{
   let demo_link:any;
-  if(props.demo !=undefined){
-    demo_link = <a className="textcontainer__link" href={props.demo}>Demo</a>
+  let classes = "project"
+  if(props.image === undefined){
+    classes+=" noImage";
   }
   return (
-    <div className="project">
-      <div className="project__imagecontainer">
-        <img className = "imagecontainer__image" src={props.image} />  
-      </div>
+    <div className={classes}>
+      <If condition = {props.image !== undefined}>
+        <div className="project__imagecontainer">
+          <img className = "imagecontainer__image" src={props.image} />  
+        </div>
+      </If>
       <div className="project__textcontainer">
         <p>{props.name}</p>
         <hr />
         <p>{props.desc}</p>
         <div className="textcontainer__linkcontainer">
-          {demo_link}
+          <If condition={props.demo !== undefined}>
+            <a className="textcontainer__link" href={props.demo}>Demo</a>
+          </If>
           <a className="textcontainer__link" href={props.github}>Github</a>
         </div>
       </div> 
@@ -276,25 +265,6 @@ class ProjectNav extends React.Component<NoProps,ProjectNavState>{
   }
   render(){
     let projects:any;
-    if(this.state.currentProjectType === 0){
-      projects = <div>
-        <Project name="Star" desc="Star is a simple theme that I designed for personal use with the Jekyll static blog system. The theme is free for use however." demo="https://reedkrawiec.github.io/Star/" github="https://github.com/reedkrawiec/Star" image="assets/images_prod/starblog.png"/>
-        <Project name="Kappa Klicker" desc="Kappa Klicker is a cookie clicker parody, recently re-coded using React and Redux" demo="https://reedkrawiec.github.io/Kappa-Klicker" github = "https://github.com/reedkrawiec/kappa-klicker" image="assets/images_prod/kappaklicker.png"/>   
-        <Project name="Space Scroller" desc="Space Scroller is an image gallery that grabs new pictures as the user scrolls, creating an infinite scrolling experience, made to practice using the Flask framework for Python." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/reedkrawiec/SpaceScroller" image="assets/images_prod/spacescroller.png"/>  
-      </div>
-    }
-    else if(this.state.currentProjectType === 1){
-      projects = <div className="librarycontainer">
-        <Library name="SimpDate" desc="A typescript library to make working with date object easier." github="https://github.com/reedkrawiec/Simp"/>
-        <Library name="AlphaData" desc="An easy to use database for node desktop applications. Written in Typescript." github="https://github.com/ReedKrawiec/AlphaData"/>
-        <Library name="Typer" desc="A typescript/javascript react component that simulates a typing effect." github="https://github.com/ReedKrawiec/TyperComponent"/>
-      </div>
-    }
-    else if(this.state.currentProjectType === 2){
-      projects = <div>
-        <Project name="PassCmd" desc="A command line password manager." github="https://github.com/reedkrawiec/PassCMD" image="assets/images_prod/cmd.png"/>
-      </div>
-    }
     return(
        <div className="page__projects">
           <div className="placeholder"></div>
@@ -303,7 +273,26 @@ class ProjectNav extends React.Component<NoProps,ProjectNavState>{
             <ProjectNavButton name="Libraries" id={1} changeFunc={this.changeCurrentProjects} />
             <ProjectNavButton name="Applications" id={2} changeFunc={this.changeCurrentProjects} />
            </div>
-        {projects}     
+        {projects}   
+        <If condition={this.state.currentProjectType===0}>
+          <div>
+            <Project name="Star" desc="Star is a simple theme that I designed for personal use with the Jekyll static blog system. The theme is free for use however." demo="https://reedkrawiec.github.io/Star/" github="https://github.com/reedkrawiec/Star" image="assets/images_prod/starblog.png"/>
+            <Project name="Kappa Klicker" desc="Kappa Klicker is a cookie clicker parody, recently re-coded using React and Redux" demo="https://reedkrawiec.github.io/Kappa-Klicker" github = "https://github.com/reedkrawiec/kappa-klicker" image="assets/images_prod/kappaklicker.png"/>   
+            <Project name="Space Scroller" desc="Space Scroller is an image gallery that grabs new pictures as the user scrolls, creating an infinite scrolling experience, made to practice using the Flask framework for Python." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/reedkrawiec/SpaceScroller" image="assets/images_prod/spacescroller.png"/>  
+          </div>
+        </If> 
+        <If condition={this.state.currentProjectType===1}>
+          <div className="librarycontainer">
+            <Library name="SimpDate" desc="A typescript library to make working with date object easier." github="https://github.com/reedkrawiec/Simp"/>
+            <Library name="AlphaData" desc="An easy to use database for node desktop applications. Written in Typescript." github="https://github.com/ReedKrawiec/AlphaData"/>
+            <Library name="Typer" desc="A typescript/javascript react component that simulates a typing effect." github="https://github.com/ReedKrawiec/TyperComponent"/>
+          </div>
+        </If>       
+        <If condition={this.state.currentProjectType===2}>
+          <div>
+            <Project name="PassCmd" desc="A command line password manager." github="https://github.com/reedkrawiec/PassCMD" />
+          </div>
+        </If>   
       </div>
     )
   }
@@ -337,7 +326,7 @@ class NavBox extends React.Component<NavBoxProps,NoState>{
     }
     else{
       style = {zIndex:0};
-      titleClasses+=" shown"
+      titleClasses+=" shown";
     }  
     return(
     <div style={style} className={classes} onClick={this.onClick}>
@@ -353,11 +342,17 @@ class NavBox extends React.Component<NavBoxProps,NoState>{
     </div>)
   }
 }
-render(<NavMenu />,document.getElementById("appRoot"));
-let elements = document.querySelectorAll(".fullnavmenu__componentbox")
+let Main = <NavMenu />;
+render(Main,document.getElementById("appRoot"));
+let elements:any = document.querySelectorAll(".fullnavmenu__componentbox")
 for(let a = 0;a<elements.length;a++){
-  elements[a].addEventListener("click",(e)=>{
+  elements[a].onclick = (e:any)=>{
     let element:any = elements[a];
-    element.style.zIndex = 99;
-  })
+    element.style.zIndex = "99";
+  }
 }
+
+window.onpopstate = function(event) {
+  if(event.state !== undefined)
+    setActive(event.state.key,event.state.hash,true);
+};

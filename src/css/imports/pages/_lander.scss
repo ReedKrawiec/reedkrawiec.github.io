@@ -1,0 +1,91 @@
+.lander{
+  position:relative;
+  top:0%;
+  height:100%;
+  text-align:left;
+  color:#424254;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  &__typer{
+    white-space: nowrap;
+    @include Media(1000px){
+      display:none;
+    }
+  }
+  &__buttons{
+    margin-top:1em;
+    display:flex;
+    justify-content: flex-start;
+    align-items:center;
+    .button__container{
+      color:white;
+      background-color:#424254;
+      padding:1em;
+      margin:1em;
+      height:2em;
+      position:relative;
+      opacity: .8;
+      cursor:pointer;
+      transition:opacity .5s;
+      &:hover{
+        opacity: 1;
+      }
+    }
+    .button__text{
+      text-align:center;
+      position:relative;
+      bottom:50%;
+      transform:translateY(-50%);
+    }
+  }
+  .icons{
+    @include Media(1000px){
+      font-size:2em;
+      padding-left:.2em;
+    }
+  }
+  &__text{
+    &--large{
+      font-size:7em;
+      padding:.2em;
+    }
+    &--medium{
+      font-size:5em;
+      padding:.2em;
+    }
+    &--small{
+      font-size:1em;
+      padding:.2em;
+      padding-left:1.1em;
+    }
+  }
+  [class^=icon]{
+    color:#424254;
+    opacity:0.5;
+    &:hover{
+      opacity:1;
+    }
+  }
+  @include Media(1000px){
+    font-size:.9em;
+    &__buttons{
+      .button__container{
+        font-size:.8em;
+      }
+    }
+  }
+  @include Media(800px){
+    text-align:center;
+    &__buttons{
+      justify-content: space-around;
+      .button__container{
+        font-size:.8em;
+      }
+    }
+    .lander__typer{
+      font-size:4em;
+    }
+  }
+}

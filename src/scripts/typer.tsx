@@ -63,10 +63,12 @@ interface TyperWrapperProps{
 class TyperWrapper extends React.Component<TyperWrapperProps,TyperWrapperState>{
   
   changeWord(){
-    let new_value:number = this.state.current_word + 1;
-    if(new_value === this.props.words.length)
-      new_value = 0;
-    this.setState({current_word:new_value}) 
+    if(document.hasFocus()){
+      let new_value:number = this.state.current_word + 1;
+      if(new_value === this.props.words.length)
+        new_value = 0;
+      this.setState({current_word:new_value})
+    } 
   }
   componentDidMount(props:any){
     let this_ = this
