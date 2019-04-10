@@ -1,4 +1,5 @@
 import * as React from "react";
+import {NoProps,NoState} from "../helpers";
 
 interface none{
 
@@ -15,7 +16,7 @@ interface TyperState{
 class Typer extends React.Component<TyperProps,TyperState>{
   state:any
   constructor(props:any){
-    super();
+    super(props);
     this.state= {word:props.word}
   }
   componentWillReceiveProps(nextProps:any){
@@ -70,12 +71,12 @@ class TyperWrapper extends React.Component<TyperWrapperProps,TyperWrapperState>{
       this.setState({current_word:new_value})
     } 
   }
-  componentDidMount(props:any){
+  componentDidMount(){
     let this_ = this
     setInterval(()=>{this_.changeWord()},this_.props.delay);
   }
-  constructor(){
-    super();
+  constructor(props:any){
+    super(props);
     this.state = {current_word:0}
     this.changeWord = this.changeWord.bind(this);
   }

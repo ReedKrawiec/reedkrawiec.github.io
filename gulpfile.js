@@ -1,4 +1,3 @@
-'use strict'
 let gulp = require('gulp');
 let rename = require('gulp-rename');
 let sourcemaps   = require('gulp-sourcemaps');
@@ -16,15 +15,7 @@ let html_path_final = 'public';
 let images_path = "src/images/*.*";
 let images_path_final = "public/assets/images_prod";
 
-gulp.task('images', function(cb) {
-  let imageop = require('gulp-image-optimization');
-    return gulp.src(images_path).pipe(imageop({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
-    })).pipe(gulp.dest(images_path_final))
-})
-gulp.task('css',function(){
+let css = function(){
   let postcss      = require('gulp-postcss');
   let autoprefixer = require('autoprefixer');
   let sass = require('gulp-sass');
@@ -39,19 +30,19 @@ gulp.task('css',function(){
   .pipe(sourcemaps.write("."))
   .pipe(gulp.dest(css_path_final))
   .pipe(connect.reload());
-})  
+}
 
-gulp.task('html',function(){
+let html = function(){
   return gulp.src(html_path)
   .pipe(gulp.dest(html_path_final))
   .pipe(connect.reload());
-})
+}
 
-gulp.task('js',function(){
+let js = function(){
   let gulp_webpack = require('gulp-webpack');
   let webpack = require("webpack");
 
-  gulp_webpack({
+  return gulp_webpack({
       devtool:"source-map",
       resolve: {
         extensions: ['', '.webpack.js', '.web.js', '.ts','.tsx', '.js'],
@@ -65,11 +56,11 @@ gulp.task('js',function(){
       },
       plugins: [
           new webpack.optimize.UglifyJsPlugin({
-              mangle:true
+              mangle:false
           }),
           new webpack.DefinePlugin({
             "process.env": {
-              NODE_ENV: JSON.stringify("production")
+              NODE_ENV: JSON.stringify("dev")
             }
           })
         ],
@@ -97,15 +88,30 @@ gulp.task('js',function(){
     })
     .pipe(gulp.dest(js_path_final))
     .pipe(connect.reload());
-})
+  }
 
-gulp.task('default',["js","html","css"])
+gulp.task('images', function(cb) {
+  let imageop = require('gulp-image-optimization');
+    return gulp.src(images_path).pipe(imageop({
+        optimizationLevel: 5,
+        progressive: true,
+        interlaced: true
+    })).pipe(gulp.dest(images_path_final))
+})
+gulp.task('css', css)  
+
+gulp.task('html', html)
+
+gulp.task('js', js)
+
+//["js","html","css"]
+gulp.task('default',gulp.parallel("js","html","css"));
 
 gulp.task('watch',()=>{
-  gulp.watch('src/css/**/**.scss',['css']);
-  gulp.watch('src/scripts/**/**.*',["js"]);
-  gulp.watch('src/**/**.html',['html']);
-  gulp.watch('src/assets/**/**.**',['move_assets']);
+  gulp.watch('src/css/**/**.scss',css);
+  gulp.watch('src/scripts/**/**.*',js);
+  gulp.watch('src/**/**.html',html);
+  //gulp.watch('src/assets/**/**.**',['move_assets']);
   connect.server({
     root: 'public',
     livereload: true

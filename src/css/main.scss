@@ -4,6 +4,7 @@
 @import 'imports/pages/projects';
 @import 'imports/pages/bio';
 @import 'imports/pages/lander';
+@import 'imports/pages/blog';
 
 @include font-face("coolvetica", "../font/coolvetica", null, null,ttf);
 
@@ -112,9 +113,16 @@ a{
     top:0px;
     color:white;
     z-index:2;
+    .navbar__headertext{
+      font-size:1.3em;
+      position:absolute;
+      left:25px;
+      top:50%;
+      transform:translateY(-50%);
+    }
     .navbar__menuicon{
       position:absolute;
-      right:5px;
+      right:25px;
       top:50%;
       transform: translateY(-50%);
     }

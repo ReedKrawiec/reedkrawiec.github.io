@@ -1,0 +1,39 @@
+.page__blog{
+  display:flex;
+  align-items:center;
+  justify-content: flex-start;
+  height:100%;
+  width:100%;
+  flex-direction: column;
+}
+
+.blog{
+
+}
+
+.blog__post{
+  margin:1em;
+  border:solid darken(#f2f2f2,5%) 10px;
+  padding:.5em;
+  .title,.date{
+    text-align: center;
+  }
+}
+
+.blog__view{
+  width:80%;
+  *{
+    margin-top:16px;
+  }
+  p{
+    font-size:20px;
+    font-family:georgia,serif;
+    line-height: 1.4;
+  }
+  h1{
+    font-size:36px;
+  }
+  h2{
+    font-szie:24px;
+  }
+}
