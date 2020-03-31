@@ -194,7 +194,7 @@ for (let a = 0; a < elements.length; a++) {
   }
 }
 
-window.onpopstate = function (event) {
+window.onpopstate = function (event: { state: { key: any; hash: any; }; }) {
   if (event.state !== undefined)
     setActive(event.state.key, event.state.hash, true);
 };
