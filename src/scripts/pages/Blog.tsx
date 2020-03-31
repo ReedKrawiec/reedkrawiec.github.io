@@ -94,13 +94,13 @@ class BlogComponent extends React.Component<BlogProps,BlogState>{
         <If condition={this.state.stateID === 1 && this.state.loadingPosts === 0 && this.state.loadingIndivPost === 0}>
           <div className="blog__view">
             <div className="blog__post">
-              <p onClick={()=>{
+              <p className="blog__back" onClick={()=>{
                 _this.setState({stateID:0});
                 this.props.hashFunc(3,'blog');
                 }}>BACK</p>
               <h1 className="title">{this.state.indivPost.title}</h1>
               <p className="date">{this.state.indivPost.date}</p>
-              <div dangerouslySetInnerHTML={{__html: this.state.indivPost.text}}></div>
+              <div className="content" dangerouslySetInnerHTML={{__html: this.state.indivPost.text}}></div>
             </div>  
           </div>
        </If>

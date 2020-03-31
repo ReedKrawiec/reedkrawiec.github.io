@@ -99,16 +99,17 @@ class ProjectNav extends React.Component<NoProps,ProjectNavState>{
         {projects}   
         <If condition={this.state.currentProjectType===0}>
           <div>
-            <Project name="Star" desc="Star is a simple theme that I designed for personal use with the Jekyll static blog system." demo="https://reedkrawiec.github.io/Star/" github="https://github.com/reedkrawiec/Star" image="assets/images_prod/starblog.png"/>
-            <Project name="Kappa Klicker" desc="Kappa Klicker is a cookie clicker parody, coded using React and Redux" demo="https://reedkrawiec.github.io/Kappa-Klicker" github = "https://github.com/reedkrawiec/kappa-klicker" image="assets/images_prod/kappaklicker.png"/>   
             <Project name="Space Scroller" desc="Space Scroller is an image gallery that grabs new pictures as the user scrolls, creating an infinite scrolling experience, made to practice using the Flask framework for Python." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/reedkrawiec/SpaceScroller" image="assets/images_prod/spacescroller.png"/>  
+            <Project name="Citizenship.io" desc="Quizzing app made to assist prospective citizens in New Brunswick pass the required test to become a citizen. Created using React, SQL and the flask Python framework." demo="https://infinitespacescroller.herokuapp.com/" github = "https://github.com/usacs/citizenship-io" image="assets/images_prod/citizenshipio.png"/>  
+            <Project name="Star" desc="Star is a theme designed for personal use with the Jekyll static blog system focusing on a sleek, clean and simple design." demo="https://reedkrawiec.github.io/Star/" github="https://github.com/reedkrawiec/Star" image="assets/images_prod/starblog.png"/>
+            <Project name="Kappa Klicker" desc="Kappa Klicker is a cookie clicker parody, coded using React and Redux" demo="https://reedkrawiec.github.io/Kappa-Klicker" github = "https://github.com/reedkrawiec/kappa-klicker" image="assets/images_prod/kappaklicker.png"/>   
           </div>
         </If> 
         <If condition={this.state.currentProjectType===1}>
           <div className="librarycontainer">
-            <Library name="SimpDate" desc="A typescript library to make working with date object easier." github="https://github.com/reedkrawiec/Simp"/>
-            <Library name="AlphaData" desc="An easy to use database for node desktop applications. Written in Typescript." github="https://github.com/ReedKrawiec/AlphaData"/>
             <Library name="Typer" desc="A typescript/javascript react component that simulates a typing effect." github="https://github.com/ReedKrawiec/TyperComponent"/>
+            <Library name="AlphaData" desc="An easy to use database for node desktop applications. Written in Typescript." github="https://github.com/ReedKrawiec/AlphaData"/>
+            <Library name="SimpDate" desc="A typescript library to make working with date object easier." github="https://github.com/reedkrawiec/Simp"/>
           </div>
         </If>       
         <If condition={this.state.currentProjectType===2}>

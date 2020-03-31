@@ -43,6 +43,8 @@
       }
     }
     @include Media(1000px){
+      margin-top:.5em;
+      margin-bottom:.5em;
       flex-direction: column;
       .project__imagecontainer{
         width:100%;
