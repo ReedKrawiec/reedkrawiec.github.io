@@ -6,6 +6,7 @@ import Projects from "./pages/Projects";
 import Blog from "./pages/Blog";
 import Services from "./pages/Services";
 import { Page, NoProps, NoState } from "./helpers";
+import createLanderGrapher from "./components/lander_graph";
 
 interface pageContentInterface {
   box1: Page,
@@ -48,32 +49,32 @@ class NavMenu extends React.Component<NoProps, NavMenuState>{
     super(a);
     this.state = {
       activeArray: [false, false, false, false],
-      hashes: ["profiles", "projects", "services", "blog"]
+      hashes: ["lander", "projects", "services", "blog"]
     };
     if (location.hash === "#menu")
       this.state = {
         activeArray: [false, false, false, false],
-        hashes: ["profiles", "projects", "services", "blog"]
+        hashes: ["lander", "projects", "services", "blog"]
       };
-    else if (location.hash === "#profiles" || location.hash === "")
+    else if (location.hash === "#lander" || location.hash === "")
       this.state = {
         activeArray: [true, false, false, false],
-        hashes: ["profiles", "projects", "services", "blog"]
+        hashes: ["lander", "projects", "services", "blog"]
       };
     else if (location.hash === "#projects")
       this.state = {
         activeArray: [false, true, false, false],
-        hashes: ["profiles", "projects", "services", "blog"]
+        hashes: ["lander", "projects", "services", "blog"]
       };
     else if (location.hash === "#resume")
       this.state = {
         activeArray: [false, false, true, false],
-        hashes: ["profiles", "projects", "services", "blog"]
+        hashes: ["lander", "projects", "services", "blog"]
       };
     else if (location.hash.substring(0, 5) === "#blog")
       this.state = {
         activeArray: [false, false, false, true],
-        hashes: ["profiles", "projects", "services", location.hash.slice(1,location.hash.length)]
+        hashes: ["lander", "projects", "services", location.hash.slice(1,location.hash.length)]
       };
     this.setActiveNavBox = this.setActiveNavBox.bind(this);
     setActive = this.setActiveNavBox;
@@ -117,7 +118,6 @@ class NavMenu extends React.Component<NoProps, NavMenuState>{
       key: activeKey
     };
     if (!x) {
-      console.log(state_to_push);
       history.pushState(state_to_push, "page 2", "#" + this.state.hashes[activeKey]);
     }
     else
@@ -150,7 +150,7 @@ class NavBox extends React.Component<NavBoxProps, NoState>{
     if (this.props.inside.redirectlink !== undefined) {
       window.location.href = this.props.inside.redirectlink;
     }
-    else if (this.props.activeArray[this.props.ident] === false)
+    else if (this.props.activeArray[this.props.ident] === false && this.props.ident != 2)
       this.props.changeActive(this.props.ident);
   }
   NavClick() {
@@ -166,8 +166,12 @@ class NavBox extends React.Component<NavBoxProps, NoState>{
       titleClasses += " hidden";
     }
     else {
-      style = { zIndex: 0 };
-      titleClasses += " shown";
+      classes += " notactive"
+      if(this.props.inside.title != "")
+        titleClasses += " shown";
+      else{
+        titleClasses += " hidden";
+      }
     }
     return (
       <div style={style} className={classes} onClick={this.onClick}>
@@ -186,14 +190,21 @@ class NavBox extends React.Component<NavBoxProps, NoState>{
 }
 let Main = <NavMenu />;
 render(Main, document.getElementById("appRoot"));
+
+var canvas = document.getElementById("lcanvas") as HTMLCanvasElement;
+createLanderGrapher(canvas);
+/*
 let elements: any = document.querySelectorAll(".fullnavmenu__componentbox")
 for (let a = 0; a < elements.length; a++) {
-  elements[a].onclick = (e: any) => {
-    let element: any = elements[a];
-    element.style.zIndex = "99";
+  elements[a].onmouseover = (e: any) => {
+    elements[a].style.zIndex = "99";
+    for(let b = 0;b<elements.length;b++){
+      if(b !== a)
+        elements[b].style.zIndex = "0";
+    }
   }
 }
-
+*/
 window.onpopstate = function (event: { state: { key: any; hash: any; }; }) {
   if (event.state !== undefined)
     setActive(event.state.key, event.state.hash, true);

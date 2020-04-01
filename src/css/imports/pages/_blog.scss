@@ -24,7 +24,11 @@
   p:not([class]){
     margin-top:60px;
     text-indent: 50px;
-    max-width: 1000px;
+    max-width: 800px;
+    @include Media(700px){
+      font-size:14px;
+      margin-top:30px;
+    }
   }
   div:not([class]){
     display: flex;
@@ -37,8 +41,8 @@
   }
   p{
     font-size:20px;
-    font-family:Arial,"Helvetica Neue",Helvetica,sans-serif;
-    line-height: 1.3;
+    font-family:NanumGothic;
+    line-height: 1.5;
   }
   h1{
     font-size:36px;
