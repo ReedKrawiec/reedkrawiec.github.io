@@ -3,6 +3,16 @@ let rename = require('gulp-rename');
 let sourcemaps   = require('gulp-sourcemaps');
 let connect = require('gulp-connect');
 
+let postcss      = require('gulp-postcss');
+let autoprefixer = require('autoprefixer');
+let sass = require('gulp-sass');
+let cssnano = require('cssnano');
+
+let gulp_webpack = require('gulp-webpack');
+let webpack = require("webpack");
+
+let imagemin = require("gulp-imagemin")
+
 let css_path = "src/css/*.*";
 let css_path_final = 'public/assets/css';
 
@@ -16,10 +26,7 @@ let images_path = "src/images/*.*";
 let images_path_final = "public/assets/images_prod";
 
 let css = function(){
-  let postcss      = require('gulp-postcss');
-  let autoprefixer = require('autoprefixer');
-  let sass = require('gulp-sass');
-  let cssnano = require('cssnano')
+
   return gulp.src(css_path)
   .pipe(rename((path)=>{
     path.basename += ".min";
@@ -39,8 +46,7 @@ let html = function(){
 }
 
 let js = function(){
-  let gulp_webpack = require('gulp-webpack');
-  let webpack = require("webpack");
+
 
   return gulp_webpack({
       devtool:"source-map",
@@ -89,14 +95,11 @@ let js = function(){
     .pipe(gulp.dest(js_path_final))
     .pipe(connect.reload());
   }
-
+    
 gulp.task('images', function(cb) {
-  let imageop = require('gulp-image-optimization');
-    return gulp.src(images_path).pipe(imageop({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
-    })).pipe(gulp.dest(images_path_final))
+    return gulp.src(images_path)
+    .pipe(imagemin())
+    .pipe(gulp.dest(images_path_final))
 })
 gulp.task('css', css)  
 

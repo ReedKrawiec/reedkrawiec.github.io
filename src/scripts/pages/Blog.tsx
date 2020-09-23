@@ -8,8 +8,8 @@ interface selectPostFunction{
 
 const entry_preview = (title:string, text:string, post:BlogPreviewObj, func:selectPostFunction) => {
   return (
-  <div className="blog__post">
-    <h1 onClick={()=>{func(post.id)}} className="title">{title}</h1>
+  <div onClick={()=>{func(post.id)}} className="blog__post preview">
+    <h1 className="title">{title}</h1>
     <div dangerouslySetInnerHTML={{__html: text}}></div>
   </div>);
 }
@@ -33,11 +33,12 @@ interface BlogState{
 interface BlogProps{
   hashFunc:{
     (a:number,b:string):void
-  }
+  },
+  postloader:any
 }
 
 class BlogComponent extends React.Component<BlogProps,BlogState>{
-  constructor(a:any){
+  constructor(a:any,b:any){
     super(a);
     this.state = {
       indivPost:{
@@ -51,6 +52,7 @@ class BlogComponent extends React.Component<BlogProps,BlogState>{
       stateID:0
     }
     this.loadPost = this.loadPost.bind(this);
+    this.props.postloader(this.loadPost);
   }
   async componentDidMount(){
     let response = await fetch("assets/blog_generated/summary.json");
@@ -92,12 +94,12 @@ class BlogComponent extends React.Component<BlogProps,BlogState>{
           <p>LOADING POST</p>
         </If>
         <If condition={this.state.stateID === 1 && this.state.loadingPosts === 0 && this.state.loadingIndivPost === 0}>
-          <div className="blog__view">
-            <div className="blog__post">
+          <div className="blog__view max">
+            <div className="blog__post max noborder">
               <p className="blog__back" onClick={()=>{
                 _this.setState({stateID:0});
                 this.props.hashFunc(3,'blog');
-                }}>BACK</p>
+                }}>BACK🡄</p>
               <h1 className="title">{this.state.indivPost.title}</h1>
               <p className="date">{this.state.indivPost.date}</p>
               <div className="content" dangerouslySetInnerHTML={{__html: this.state.indivPost.text}}></div>
@@ -123,10 +125,10 @@ class BlogComponent extends React.Component<BlogProps,BlogState>{
   }
 }
 
-function Blog(setHash:any){
+function Blog(setHash:any,postloader:any){
   return {
     content: (
-      <BlogComponent hashFunc={setHash} />
+      <BlogComponent hashFunc={setHash} postloader={postloader} />
     ),
     title: "Blog",
     navclass: "page__navbar--indigo"

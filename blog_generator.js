@@ -1,6 +1,18 @@
 let fs = require("fs");
 let path = require("path");
-var md = require('markdown-it')();
+var hljs = require('highlight.js');
+var md = require('markdown-it')({
+  highlight: function (str, lang) {
+    if (lang && hljs.getLanguage(lang)) {
+      try {
+        return hljs.highlight(lang, str).value;
+      } catch (__) {}
+    }
+
+    return ''; // use external default escaping
+  }
+});
+
 
 fs.readdir("./blog_content", (err, x) => {
   let counter = 0;

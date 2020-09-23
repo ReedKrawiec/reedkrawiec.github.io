@@ -45,8 +45,10 @@ let setActive: any;
 
 class NavMenu extends React.Component<NoProps, NavMenuState>{
   pageContents: pageContentInterface
+  loadpost:any
   constructor(a: any) {
     super(a);
+    console.log("test")
     this.state = {
       activeArray: [false, false, false, false],
       hashes: ["lander", "projects", "services", "blog"]
@@ -80,15 +82,18 @@ class NavMenu extends React.Component<NoProps, NavMenuState>{
     setActive = this.setActiveNavBox;
     this.toMenu = this.toMenu.bind(this);
     this.updateHash = this.updateHash.bind(this);
+    this.getLoadPost = this.getLoadPost.bind(this);
     this.pageContents = {
       box1: Lander(this.toMenu),
-      box2: Projects,
+      box2: Projects(this.toMenu),
       box3: Services,
-      box4: Blog(this.updateHash)
+      box4: Blog(this.updateHash,this.getLoadPost)
   }
+} getLoadPost(a:any){
+  this.loadpost = a;
+  console.log(this.loadpost);
 }
   public updateHash(id:number, value:string):void{
-    console.log(value)
     let hashes:Array<string> = this.state.hashes;
     hashes[id] = value;
     if(id === this.state.activeArray.indexOf(true)){
@@ -96,7 +101,6 @@ class NavMenu extends React.Component<NoProps, NavMenuState>{
         hash: value,
         key: id
       };
-        console.log(state_to_push);
         history.pushState(state_to_push, "page 2","#"+value);
     }
     this.setState(({
@@ -104,19 +108,23 @@ class NavMenu extends React.Component<NoProps, NavMenuState>{
     }))
   }
   public toMenu(ident: number, hash: string, delay: number = 0): void {
-
     history.replaceState(history.state, undefined, "");
     this.setState({ activeArray: [false, false, false, false] });
     if (hash !== undefined) {
-      setTimeout(() => { this.setActiveNavBox(ident) }, delay)
+      setTimeout(() => { this.setActiveNavBox(ident,false,hash) }, delay)
     }
   }
-  public setActiveNavBox(activeKey: number, DoNotUpdateHistory?: boolean): void {
+  public setActiveNavBox(activeKey: number, DoNotUpdateHistory?: boolean, hash_parse?:string): void {
     let x = DoNotUpdateHistory || false;
     let state_to_push = {
       hash: this.state.hashes[activeKey],
       key: activeKey
     };
+    if(activeKey == 3){
+      if(hash_parse && hash_parse.length > 5){
+        this.loadpost(hash_parse.slice(5));
+      }
+    }
     if (!x) {
       history.pushState(state_to_push, "page 2", "#" + this.state.hashes[activeKey]);
     }

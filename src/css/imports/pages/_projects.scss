@@ -27,6 +27,7 @@
     }
      .textcontainer__linkcontainer{
         margin-top:.5em;
+        display:flex;
       }  
     .project__textcontainer{
       color:#f2f2f2;
@@ -35,6 +36,7 @@
       margin:1em;
       width:40%;
      .textcontainer__link{
+        cursor:pointer;
         margin-right:.6em;
         color:skyblue;
       }
@@ -62,7 +64,7 @@
   }
 }
 .library{
-  width:80%;  
+  width:45%;  
  .library__textcontainer{
       color:#f2f2f2;
       background-color:#262626;
@@ -72,11 +74,15 @@
        .textcontainer__link{
         margin-right:.6em;
         color:skyblue;
+        cursor:pointer;
       }
       @include Media(768px){
         font-size:.5em;
       }
-    }  
+  }  
+  @include Media(1650px){
+      width:90%;
+  }
 }
 .project__selector{
   margin:1em;
@@ -99,7 +105,15 @@
       background-color:white;
       color:black;
     }
+    &.active{
+      outline:5px solid white;
+      &:hover{
+        background-color: #262626;
+        color:white;
+      }
+    }
   }
+
   @include Media(1000px){
     .selector__button{
       font-size:.5em;
