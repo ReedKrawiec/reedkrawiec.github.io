@@ -63,7 +63,7 @@
   flex-wrap: wrap;
   justify-content: center;
   p:not([class]){
-    margin-top:60px;
+    margin-top:10px;
     text-indent: 50px;
     max-width: 800px;
     @include Media(700px){
@@ -110,6 +110,7 @@
     display:flex;
     flex-direction: column;
     align-items: center;
+    margin-top: 40px;
   }
   @include Media(1000px){
     width:95%;
