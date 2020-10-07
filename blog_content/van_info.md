@@ -4,8 +4,8 @@ Van Info
 Van aims to be a game engine that simplifies and streamlines the creation of 2D games, targeting the HTML5 canvas. The engine conceptualizes the game environment as consisting of "rooms" that contain game logic alongside with "objects". Objects are used to represent any sort of ingame item, character or construct, such as a player  character, a door to another room, or pieces on a chess board. Through use of objects, their state, and the room's state, full-fledged, high-quality games can be created with ease and speed.
 
 # Examples
-![shooter](https://i.gyazo.com/438f938c63bf78a3354752887656520b.png)
-[Link](http://reedkrawiec.github.io/subpages/van/shooter/)
+![airshots](https://i.gyazo.com/8b2e91160925546da8961eef7dae32a4.png)
+[Link](http://reedkrawiec.github.io/subpages/van/airshot/)
 
 ![chess](https://i.gyazo.com/267e310895fb95103f967463f59b0028.png)
 [Link](http://reedkrawiec.github.io/subpages/van/chess/)
