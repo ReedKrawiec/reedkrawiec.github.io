@@ -30,7 +30,7 @@ function createLander(a: any) {
         <div className="lander__about__container">
           <div className="lander__about">
             <h1>About me</h1>
-            <p>I'm a Sophomore Computer Science student at Rutgers University. I enjoy tinkering with new, interesting and innovative technologies and disciplines within CS. My free time is most enjoyed when it's spent doing an interesting personal project, or playing my guitar. Right now my interests are in Web Design and Development, App development, Machine Learning and Systems Programming.</p>
+            <p>I'm a Senior Computer Science student at Rutgers University. I enjoy tinkering with new, interesting and innovative technologies and disciplines within CS. My free time is most enjoyed when it's spent doing an interesting personal project, or playing my guitar. Right now my interests are in Web Design and Development, App development, Machine Learning and Systems Programming.</p>
             <h1>Skills</h1>
             <p>I've been doing web programming since I was in middle school. I have extensive experience with React.js and other front-end frameworks and libraries, along with a solid CS foundation and knowledge of the in's and out's of Javascript. I've deployed servers written in Node.js and Python, putting both to use in websites and apps developed from the ground up by myself. I also have experience with SQL, designing and developing systems to securely store user data, and implementing token-based login systems. Within school, I've gained a deeper understanding of Computer Architecture, alongside work done in Java and C.</p>
             <h1>Tools</h1>
