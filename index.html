@@ -1,11 +1,129 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
 <html>
- <head>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>/home/reed</title>
+    <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="assets/css/main.min.css" />
-    <title>Reed Krawiec</title>
+    <link rel="stylesheet" href="./css/page.css">
+    <link rel="icon" type="image/x-icon" href="./images/favicon-32x32.png">
   </head>
   <body>
-   <div id="appRoot"></div>
-   <script src="assets/scripts/main.min.js"></script>
+    <!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <section class="lander">
+      <div class="lander-content">
+        <div class="identity">
+          <div class="head">
+            I'm Reed;
+          </div>
+          <div class="buttons">
+            <a class="button" href="https://medium.com/@reedkrawiec">Medium</a>
+            <a class="button" href="https://www.github.com/reedkrawiec">Github</a>
+            <a class="button" href="./assets/resume.pdf">Resume</a>
+          </div>
+        </div>
+        <section class="about">
+          <h1>I'm a developer,</h1>
+          <p>working in various fields such as Android, frontend, backend, machine learning, and gamedev. </p>
+          <p>I make my projects using Python, Javascript, Node, Kotlin and Rust, among other technologies.</p>
+        </section>
+      </div>
+    </section>
+    <section class="projects">
+      <div class="proj">
+        <img src="./images/stitch.png" />
+        <div class="proj-content">
+          <h2>Stitch</h2>
+          <br>
+          <p>Easily create and render videos using content from Twitch.TV. Uses AWS (ECS, ECR) to start up docker images that render jobs cheaply and quickly to scale. Flask backend / React frontend.</p>
+          <p>
+            <a class="proj-link" href="https://stitch.reed.codes">Demo</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="./images/boardexplorer.png" />
+        <div class="proj-content">
+          <h2>Board Explorer</h2>
+          <br>
+          <p>A neural network (YOLOv5 in Pytorch) chrome extension that replaces static chessboards on your screen with playable boards that have engine support.</p>
+          <p>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="./images/buzz.png" />
+        <div class="proj-content">
+          <h2>Buzz</h2>
+          <br>
+          <p>Android app / Web. app that lets you use your phone's microphone to detect loud sounds (such as a laundry machine's buzz). Flask / React.</p>
+          <p>
+            <a class="proj-link" href="https://buzz.reed.codes">Demo</a>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/Buzz">Github</a>
+            <a class="proj-link" href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Playstore</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="./images/citizenshipio.png" />
+        <div class="proj-content">
+          <h2>Citizen</h2>
+          <br>
+          <p>Quiz framework using React, Python and SQL (Sqlite). Server login system implemented using sha-256, randomly generated salts, and login tokens.
+            Server login system implemented using sha-256, randomly generated salts, and login tokens.
+          </p>
+          <p>
+            <a class="proj-link" href="https://citizen.reed.codes/en/">Demo</a>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/Citizen">Github</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png" />
+        <div class="proj-content">
+          <h2>DaMa</h2>
+          <br>
+          <p>Generate training data easily using Pillow and json configuration. Used to generate the 8000+ image dataset used to train Board Explorer!</p>
+          <p>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/DaMa">Github</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="./images/twitchsurfer.png" />
+        <div class="proj-content">
+          <h2>Twitch Surfer</h2>
+          <br>
+          <p>An interactive streamer schedule viewer for Twitch. Similar to channel guides on Television. Created with React and Python</p>
+          <p>
+            <a class="proj-link" href="https://www.reed.codes/twitchsurfer/">Demo</a>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+          </p>
+        </div>
+      </div>
+      <div class="proj">
+        <img src="./images/van.png" />
+        <div class="proj-content">
+          <h2>Van</h2>
+          <br>
+          <p>Simplistic Typescript 2D game engine.</p>
+          <p>
+            <a class="proj-link" href="https://www.reed.codes/subpages/van/airshot/">Demo1</a>
+            <a class="proj-link" href="https://www.reed.codes/subpages/van/chess/">Demo2</a>
+            <a class="proj-link" href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+          </p>
+        </div>
+      </div>
+      </div>
+    </section>
+    <script src="./scripts/page.js" async defer></script>
   </body>
 </html>
