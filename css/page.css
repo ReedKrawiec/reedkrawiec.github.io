@@ -183,14 +183,15 @@ html{
 }
 
 .projects > .proj{
-  width:20em;
+  width: 18em;
   background-color: var(--dark-gray);
   border-radius: 1em;
-  color:var(--white);
+  color: var(--white);
   margin: 2em;
   display: flex;
   font-weight: bold;
   flex-direction: column;
+  box-shadow: #17e3f0 1.5em 1.5em;
 }
 
 .proj > img{
