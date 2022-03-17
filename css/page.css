@@ -71,6 +71,8 @@ html{
   align-items: center;
   justify-content: center;
   height:100vh;
+  z-index: 2;
+  position: relative;
 }
 .identity{
   display:inline-block;
@@ -139,7 +141,7 @@ html{
     flex-direction: column;
   }
   .about{
-    width:16em;
+    width:16.1em;
     height:auto;
     box-shadow: none;
   }
@@ -150,6 +152,26 @@ html{
     font-size:0.8em;
   }
 }
+
+@media screen and (min-width:1500px){
+  html{
+    font-size:1.2em;
+  }
+}
+
+
+@media screen and (min-width:2100px){
+  html{
+    font-size:1.5em;
+  }
+}
+
+@media screen and (min-width:3000px){
+  html{
+    font-size:2em;
+  }
+}
+
 
 .projects{
   background-color: var(--dark-purple);
@@ -213,4 +235,13 @@ html{
 .proj-link{
   color:var(--light-blue);
   text-decoration:none;
+}
+
+#gameoflife{
+  position:absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  z-index:1;
 }
