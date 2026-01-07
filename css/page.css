@@ -200,10 +200,10 @@ html{
 
 .proj {
   display: grid;
-  grid-template-columns: 10em 1fr auto auto;
+  grid-template-columns: 12em 1fr auto auto;
   align-items: center;
   gap: 1.5em;
-  padding: 1.2em 0;
+  padding: 0;
   border-bottom: 1px solid rgba(255,255,255,0.1);
   transition: background-color 0.2s ease;
 }
@@ -216,11 +216,21 @@ html{
   border-bottom: none;
 }
 
-.proj h3 {
+.proj-name {
+  background-size: cover;
+  background-position: center;
+  padding: 0.8em 1em;
+  min-width: 10em;
+  display: flex;
+  align-items: center;
+}
+
+.proj-name h3 {
   font-size: 1.1em;
   font-weight: bold;
   color: var(--light-teal);
   white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
 }
 
 .proj > p {
@@ -266,7 +276,22 @@ html{
   .proj {
     grid-template-columns: 1fr;
     gap: 0.6em;
-    padding: 1.5em 0;
+    padding: 0;
+  }
+
+  .proj-name {
+    padding: 1em;
+    min-height: 4em;
+  }
+
+  .proj > p,
+  .proj-tech,
+  .proj-links {
+    padding: 0 1em;
+  }
+
+  .proj-links {
+    padding-bottom: 1em;
   }
 
   .proj-tech {
@@ -275,6 +300,16 @@ html{
 
   .projects-header h2 {
     font-size: 1.6em;
+  }
+
+  .gol-controls {
+    top: 1em;
+    right: 1em;
+  }
+
+  .gol-controls button {
+    font-size: 0.7em;
+    padding: 0.4em 0.7em;
   }
 }
 
@@ -285,4 +320,37 @@ html{
   width:100%;
   height:100%;
   z-index:1;
+}
+
+.gol-controls {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  z-index: 10;
+  display: flex;
+  gap: 0.5em;
+}
+
+.gol-controls button {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--dark-gray);
+  color: var(--light-teal);
+  border: 2px solid var(--teal);
+}
+
+.gol-controls button:hover {
+  background-color: var(--teal);
+  color: var(--dark-gray);
+}
+
+.gol-controls button.active {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  border-color: var(--orange);
 }

@@ -91,11 +91,56 @@ gameoflife.addEventListener("click", (event)=>{
 
 render(false);
 
-setInterval(function(){
+let isPlaying = true;
+let intervalId = null;
+
+const stepBtn = document.getElementById('gol-step');
+const toggleBtn = document.getElementById('gol-toggle');
+const resetBtn = document.getElementById('gol-reset');
+
+const tick = () => {
   if(counter == 330){
     grid = JSON.parse(starting);
     counter = 0;
   }
   counter++;
-  render(true)
-}, 100);
+  render(true);
+};
+
+const startSimulation = () => {
+  if (!intervalId) {
+    intervalId = setInterval(tick, 100);
+  }
+  isPlaying = true;
+  toggleBtn.textContent = 'Pause';
+};
+
+const stopSimulation = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+  isPlaying = false;
+  toggleBtn.textContent = 'Play';
+};
+
+toggleBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    stopSimulation();
+  } else {
+    startSimulation();
+  }
+});
+
+stepBtn.addEventListener('click', () => {
+  stopSimulation();
+  render(true);
+});
+
+resetBtn.addEventListener('click', () => {
+  grid = JSON.parse(starting);
+  counter = 0;
+  render(false);
+});
+
+startSimulation();
