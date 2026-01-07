@@ -71,6 +71,23 @@ const render = (shouldUpdate) => {
       }
     }
   }
+
+  // Draw pattern preview
+  if (editMode && selectedPattern && previewX >= 0 && previewY >= 0) {
+    const pattern = patterns[selectedPattern];
+    ctx.fillStyle = "rgba(255, 157, 0, 0.6)"; // Orange preview color
+    for (let y = 0; y < pattern.length; y++) {
+      for (let x = 0; x < pattern[y].length; x++) {
+        if (pattern[y][x] === 1) {
+          const gridX = previewX + x;
+          const gridY = previewY + y;
+          if (gridX >= 0 && gridX < width && gridY >= 0 && gridY < height) {
+            ctx.fillRect(gridX * squareSize, gridY * squareSize, squareSize, squareSize);
+          }
+        }
+      }
+    }
+  }
 }
 
 let counter = 0;
@@ -114,6 +131,8 @@ let editMode = false;
 let selectedPattern = null;
 let isDrawing = false;
 let drawValue = 1;
+let previewX = -1;
+let previewY = -1;
 
 const editBtn = document.getElementById('gol-edit');
 const patternsBtn = document.getElementById('gol-patterns-btn');
@@ -147,6 +166,8 @@ gameoflife.addEventListener("mousedown", (event) => {
   if (selectedPattern) {
     placePattern(patterns[selectedPattern], x, y);
     selectedPattern = null;
+    previewX = -1;
+    previewY = -1;
     gameoflife.style.cursor = 'crosshair';
   } else {
     isDrawing = true;
@@ -157,10 +178,20 @@ gameoflife.addEventListener("mousedown", (event) => {
 });
 
 gameoflife.addEventListener("mousemove", (event) => {
-  if (!editMode || !isDrawing) return;
+  if (!editMode) return;
 
   const { x, y } = getGridCoords(event);
-  if (x >= 0 && x < width && y >= 0 && y < height) {
+
+  // Update pattern preview position
+  if (selectedPattern) {
+    previewX = x;
+    previewY = y;
+    render(false);
+    return;
+  }
+
+  // Handle drawing
+  if (isDrawing && x >= 0 && x < width && y >= 0 && y < height) {
     grid[x][y] = drawValue;
     render(false);
   }
@@ -178,6 +209,7 @@ editBtn.addEventListener('click', () => {
   editMode = !editMode;
   editBtn.classList.toggle('active', editMode);
   gameoflife.classList.toggle('edit-mode', editMode);
+  document.body.classList.toggle('gol-edit-mode', editMode);
   patternsContainer.style.display = editMode ? 'block' : 'none';
 
   if (editMode) {
@@ -212,13 +244,10 @@ let intervalId = null;
 
 const stepBtn = document.getElementById('gol-step');
 const toggleBtn = document.getElementById('gol-toggle');
-const resetBtn = document.getElementById('gol-reset');
+const clearBtn = document.getElementById('gol-clear');
+const landerContent = document.querySelector('.lander-content');
 
 const tick = () => {
-  if(counter == 330){
-    grid = JSON.parse(starting);
-    counter = 0;
-  }
   counter++;
   render(true);
 };
@@ -253,8 +282,8 @@ stepBtn.addEventListener('click', () => {
   render(true);
 });
 
-resetBtn.addEventListener('click', () => {
-  grid = JSON.parse(starting);
+clearBtn.addEventListener('click', () => {
+  grid = create2DArray(width, height);
   counter = 0;
   render(false);
 });

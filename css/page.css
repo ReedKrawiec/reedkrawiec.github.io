@@ -487,3 +487,22 @@ html{
   padding: 0.5em;
   align-items: center;
 }
+
+/* Edit mode - move lander content to bottom-left */
+body.gol-edit-mode .lander-content {
+  align-items: flex-end;
+  justify-content: flex-start;
+  padding: 2em;
+  pointer-events: none;
+}
+
+body.gol-edit-mode .lander-content .identity,
+body.gol-edit-mode .lander-content .about {
+  transform: scale(0.7);
+  transform-origin: bottom left;
+  pointer-events: auto;
+}
+
+body.gol-edit-mode .lander-content .about {
+  box-shadow: none;
+}
