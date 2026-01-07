@@ -492,7 +492,7 @@ html{
 body.gol-edit-mode .lander-content {
   align-items: flex-end;
   justify-content: flex-start;
-  padding: 2em;
+  padding: 3em;
   pointer-events: none;
 }
 
@@ -501,8 +501,13 @@ body.gol-edit-mode .lander-content .about {
   pointer-events: auto;
 }
 
+body.gol-edit-mode .lander-content .identity {
+  margin-bottom: 1em;
+}
+
 body.gol-edit-mode .lander-content .about {
   box-shadow: none;
-  width: 20em;
+  width: 18em;
   height: auto;
+  margin-bottom: 1em;
 }
