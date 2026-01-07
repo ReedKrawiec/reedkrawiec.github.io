@@ -263,3 +263,21 @@ resetBtn.addEventListener('click', () => {
 patternsContainer.style.display = 'none';
 
 startSimulation();
+
+// Project row expand functionality
+document.querySelectorAll('.proj').forEach(proj => {
+  proj.addEventListener('click', (e) => {
+    // Don't toggle if clicking a link
+    if (e.target.tagName === 'A') return;
+
+    // Close other expanded projects
+    document.querySelectorAll('.proj.expanded').forEach(other => {
+      if (other !== proj) {
+        other.classList.remove('expanded');
+      }
+    });
+
+    // Toggle current project
+    proj.classList.toggle('expanded');
+  });
+});

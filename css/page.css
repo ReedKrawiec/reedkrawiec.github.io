@@ -199,21 +199,25 @@ html{
 }
 
 .proj {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+.proj:last-child {
+  border-bottom: none;
+}
+
+.proj-row {
   display: grid;
   grid-template-columns: 12em 1fr auto auto;
   align-items: center;
   gap: 1.5em;
   padding: 0;
-  border-bottom: 1px solid rgba(255,255,255,0.1);
   transition: background-color 0.2s ease;
 }
 
-.proj:hover {
+.proj-row:hover {
   background-color: rgba(255,255,255,0.03);
-}
-
-.proj:last-child {
-  border-bottom: none;
 }
 
 .proj-name {
@@ -239,11 +243,69 @@ html{
   align-items: center;
 }
 
-.proj > p {
+.proj-row > p {
   color: var(--white);
   font-size: 0.85em;
   line-height: 1.4;
   opacity: 0.8;
+}
+
+.proj-expanded {
+  display: none;
+  grid-template-columns: 20em 1fr;
+  gap: 2em;
+  padding: 2em;
+  background-color: rgba(0,0,0,0.2);
+  animation: expandIn 0.3s ease;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.proj.expanded .proj-expanded {
+  display: grid;
+}
+
+.proj-expanded img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid var(--teal);
+}
+
+.proj-expanded-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.proj-expanded-content h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--light-teal);
+}
+
+.proj-expanded-content > p {
+  color: var(--white);
+  font-size: 0.9em;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.proj-expanded-content .proj-tech {
+  flex-wrap: wrap;
+}
+
+.proj-expanded-content .proj-links {
+  margin-top: auto;
 }
 
 .proj-tech {
@@ -279,7 +341,7 @@ html{
 }
 
 @media (max-width: 800px) {
-  .proj {
+  .proj-row {
     grid-template-columns: 1fr;
     gap: 0.6em;
     padding: 0;
@@ -290,18 +352,28 @@ html{
     min-height: 4em;
   }
 
-  .proj > p,
-  .proj-tech,
-  .proj-links {
+  .proj-row > p,
+  .proj-row .proj-tech,
+  .proj-row .proj-links {
     padding: 0 1em;
   }
 
-  .proj-links {
+  .proj-row .proj-links {
     padding-bottom: 1em;
   }
 
   .proj-tech {
     flex-wrap: wrap;
+  }
+
+  .proj-expanded {
+    grid-template-columns: 1fr;
+    padding: 1.5em;
+  }
+
+  .proj-expanded img {
+    max-height: 15em;
+    object-fit: cover;
   }
 
   .projects-header h2 {

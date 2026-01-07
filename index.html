@@ -60,90 +60,217 @@
         <h2>Projects</h2>
       </div>
       <div class="projects-list">
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/stitch.png')"><h3>Stitch</h3></div>
-          <p>Video rendering pipeline for Twitch content using AWS with auto-scaling Docker containers</p>
-          <div class="proj-tech">
-            <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
+        <article class="proj" data-img="./images/stitch.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/stitch.png')"><h3>Stitch</h3></div>
+            <p>Video rendering pipeline for Twitch content using AWS with auto-scaling Docker containers</p>
+            <div class="proj-tech">
+              <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://stitch.reed.codes">Demo</a>
+            </div>
           </div>
-          <div class="proj-links">
-            <a href="https://stitch.reed.codes">Demo</a>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/boardexplorer.png')"><h3>Board Explorer</h3></div>
-          <p>Chrome extension using YOLOv5 to replace static chessboard images with interactive boards</p>
-          <div class="proj-tech">
-            <span>PyTorch</span><span>YOLOv5</span><span>Chrome</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/buzz.png')"><h3>Buzz</h3></div>
-          <p>Cross-platform app for detecting loud sounds using your phone's microphone</p>
-          <div class="proj-tech">
-            <span>Android</span><span>Flask</span><span>React</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://buzz.reed.codes">Demo</a>
-            <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
-            <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
+          <div class="proj-expanded">
+            <img src="./images/stitch.png" alt="Stitch" />
+            <div class="proj-expanded-content">
+              <h3>Stitch</h3>
+              <p>A full-stack video rendering platform that allows users to easily create and compile videos from Twitch.TV content. The system leverages AWS infrastructure (ECS, ECR) to dynamically spin up Docker containers that handle rendering jobs, enabling cost-effective scaling based on demand. Users can select clips, add transitions, and queue renders through a React frontend, while the Flask backend manages job orchestration and storage.</p>
+              <div class="proj-tech">
+                <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span><span>ECS</span><span>ECR</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://stitch.reed.codes">Demo</a>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/citizenshipio.png')"><h3>Citizen</h3></div>
-          <p>Quiz framework with secure authentication using salted SHA-256 hashing</p>
-          <div class="proj-tech">
-            <span>React</span><span>Python</span><span>SQLite</span>
+        <article class="proj" data-img="./images/boardexplorer.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/boardexplorer.png')"><h3>Board Explorer</h3></div>
+            <p>Chrome extension using YOLOv5 to replace static chessboard images with interactive boards</p>
+            <div class="proj-tech">
+              <span>PyTorch</span><span>YOLOv5</span><span>Chrome</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
+            </div>
           </div>
-          <div class="proj-links">
-            <a href="https://citizen.reed.codes/en/">Demo</a>
-            <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png')"><h3>DaMa</h3></div>
-          <p>Training data generator - created 8000+ image dataset for Board Explorer</p>
-          <div class="proj-tech">
-            <span>Python</span><span>Pillow</span><span>ML</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://github.com/ReedKrawiec/DaMa">Github</a>
-          </div>
-        </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/twitchsurfer.png')"><h3>Twitch Surfer</h3></div>
-          <p>Interactive TV-style channel guide for browsing Twitch streamer schedules</p>
-          <div class="proj-tech">
-            <span>React</span><span>Python</span><span>Twitch API</span>
-          </div>
-          <div class="proj-links">
-            <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
-            <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+          <div class="proj-expanded">
+            <img src="./images/boardexplorer.png" alt="Board Explorer" />
+            <div class="proj-expanded-content">
+              <h3>Board Explorer</h3>
+              <p>A Chrome extension that uses computer vision to detect static chessboard images on any webpage and replaces them with fully interactive, playable boards. The YOLOv5 neural network (trained in PyTorch) identifies board positions with high accuracy, then converts them to FEN notation. Users can analyze positions with Stockfish engine support, explore variations, and even continue games from screenshots.</p>
+              <div class="proj-tech">
+                <span>PyTorch</span><span>YOLOv5</span><span>Chrome Extension</span><span>Stockfish</span><span>FEN</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
-          <p>Minimal 2D game engine with P2P networking and gamepad support</p>
-          <div class="proj-tech">
-            <span>TypeScript</span><span>WebRTC</span><span>Canvas</span>
+        <article class="proj" data-img="./images/buzz.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/buzz.png')"><h3>Buzz</h3></div>
+            <p>Cross-platform app for detecting loud sounds using your phone's microphone</p>
+            <div class="proj-tech">
+              <span>Android</span><span>Flask</span><span>React</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://buzz.reed.codes">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
+              <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
+            </div>
           </div>
-          <div class="proj-links">
-            <a href="https://www.reed.codes/subpages/van/airshot/">Demo</a>
-            <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+          <div class="proj-expanded">
+            <img src="./images/buzz.png" alt="Buzz" />
+            <div class="proj-expanded-content">
+              <h3>Buzz</h3>
+              <p>A practical utility app that monitors ambient sound levels and sends notifications when loud sounds are detected - perfect for knowing when the laundry is done or the oven timer goes off from another room. Available as both an Android app and web application. The phone acts as a remote microphone, with customizable sensitivity thresholds and notification options.</p>
+              <div class="proj-tech">
+                <span>Android</span><span>Kotlin</span><span>Flask</span><span>React</span><span>WebSockets</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://buzz.reed.codes">Demo</a>
+                <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
+                <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
+              </div>
+            </div>
           </div>
         </article>
-        <article class="proj">
-          <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png')"><h3>fentoboardimage</h3></div>
-          <p>Python library for generating customizable chessboard images from FEN notation</p>
-          <div class="proj-tech">
-            <span>Python</span><span>Pillow</span><span>PyPI</span>
+        <article class="proj" data-img="./images/citizenshipio.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/citizenshipio.png')"><h3>Citizen</h3></div>
+            <p>Quiz framework with secure authentication using salted SHA-256 hashing</p>
+            <div class="proj-tech">
+              <span>React</span><span>Python</span><span>SQLite</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://citizen.reed.codes/en/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
+            </div>
           </div>
-          <div class="proj-links">
-            <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
-            <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
+          <div class="proj-expanded">
+            <img src="./images/citizenshipio.png" alt="Citizen" />
+            <div class="proj-expanded-content">
+              <h3>Citizen</h3>
+              <p>A quiz application framework originally built to help users study for citizenship tests. Features a secure authentication system with salted SHA-256 password hashing and session tokens. The React frontend provides an intuitive quiz interface with progress tracking, while the Python backend handles user management and quiz data stored in SQLite.</p>
+              <div class="proj-tech">
+                <span>React</span><span>Python</span><span>SQLite</span><span>SHA-256</span><span>REST API</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://citizen.reed.codes/en/">Demo</a>
+                <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="proj" data-img="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png')"><h3>DaMa</h3></div>
+            <p>Training data generator - created 8000+ image dataset for Board Explorer</p>
+            <div class="proj-tech">
+              <span>Python</span><span>Pillow</span><span>ML</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/DaMa">Github</a>
+            </div>
+          </div>
+          <div class="proj-expanded">
+            <img src="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png" alt="DaMa" />
+            <div class="proj-expanded-content">
+              <h3>DaMa (Data Maker)</h3>
+              <p>A Python tool for programmatically generating training data for machine learning models. Uses JSON configuration files to define image generation parameters, then leverages Pillow to create diverse training samples with randomized variations. This tool was used to generate the 8000+ image dataset that trained Board Explorer's chess detection model, with variations in board styles, piece sets, lighting, and perspectives.</p>
+              <div class="proj-tech">
+                <span>Python</span><span>Pillow</span><span>JSON</span><span>ML Data</span><span>Computer Vision</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://github.com/ReedKrawiec/DaMa">Github</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="proj" data-img="./images/twitchsurfer.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/twitchsurfer.png')"><h3>Twitch Surfer</h3></div>
+            <p>Interactive TV-style channel guide for browsing Twitch streamer schedules</p>
+            <div class="proj-tech">
+              <span>React</span><span>Python</span><span>Twitch API</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+            </div>
+          </div>
+          <div class="proj-expanded">
+            <img src="./images/twitchsurfer.png" alt="Twitch Surfer" />
+            <div class="proj-expanded-content">
+              <h3>Twitch Surfer</h3>
+              <p>An interactive schedule viewer for Twitch streamers, inspired by traditional television channel guides. Browse upcoming streams in a familiar grid layout, filter by game or category, and discover new content based on your viewing history. The Python backend aggregates schedule data from the Twitch API, while the React frontend provides smooth navigation and real-time updates.</p>
+              <div class="proj-tech">
+                <span>React</span><span>Python</span><span>Twitch API</span><span>Schedule Grid</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
+                <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="proj" data-img="./images/van.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
+            <p>Minimal 2D game engine with P2P networking and gamepad support</p>
+            <div class="proj-tech">
+              <span>TypeScript</span><span>WebRTC</span><span>Canvas</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.reed.codes/subpages/van/airshot/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+            </div>
+          </div>
+          <div class="proj-expanded">
+            <img src="./images/van.png" alt="Van" />
+            <div class="proj-expanded-content">
+              <h3>Van Engine</h3>
+              <p>A lightweight 2D game engine built in TypeScript, designed for rapid prototyping and browser-based games. Features include peer-to-peer multiplayer via WebRTC (no server required), gamepad support for local multiplayer, a component-based entity system, and Canvas rendering. Includes a visual editor for creating and testing game scenes. Several demo games showcase the engine's capabilities.</p>
+              <div class="proj-tech">
+                <span>TypeScript</span><span>WebRTC</span><span>Canvas</span><span>Gamepad API</span><span>P2P</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://www.reed.codes/subpages/van/airshot/">Airshot Demo</a>
+                <a href="https://www.reed.codes/subpages/van/chess/">Chess Demo</a>
+                <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="proj" data-img="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png')"><h3>fentoboardimage</h3></div>
+            <p>Python library for generating customizable chessboard images from FEN notation</p>
+            <div class="proj-tech">
+              <span>Python</span><span>Pillow</span><span>PyPI</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
+              <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
+            </div>
+          </div>
+          <div class="proj-expanded">
+            <img src="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png" alt="Fen To Board Image" />
+            <div class="proj-expanded-content">
+              <h3>fentoboardimage</h3>
+              <p>A Python library published on PyPI that generates PIL/Pillow images of chessboards from FEN (Forsyth-Edwards Notation) strings. Highly configurable with options for board colors, piece sets, square highlighting, arrows for move annotations, and coordinate labels. Used by chess content creators, analysis tools, and as a component in other chess-related projects.</p>
+              <div class="proj-tech">
+                <span>Python</span><span>Pillow</span><span>PyPI</span><span>FEN</span><span>Chess</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
+                <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
+              </div>
+            </div>
           </div>
         </article>
       </div>
