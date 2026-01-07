@@ -498,11 +498,11 @@ body.gol-edit-mode .lander-content {
 
 body.gol-edit-mode .lander-content .identity,
 body.gol-edit-mode .lander-content .about {
-  transform: scale(0.7);
-  transform-origin: bottom left;
   pointer-events: auto;
 }
 
 body.gol-edit-mode .lander-content .about {
   box-shadow: none;
+  width: 20em;
+  height: auto;
 }

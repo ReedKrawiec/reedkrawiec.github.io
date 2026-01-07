@@ -60,27 +60,29 @@
         <h2>Projects</h2>
       </div>
       <div class="projects-list">
-        <article class="proj" data-img="./images/stitch.png">
+        <article class="proj" data-img="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png">
           <div class="proj-row">
-            <div class="proj-name" style="background-image: url('./images/stitch.png')"><h3>Stitch</h3></div>
-            <p>Video rendering pipeline for Twitch content using AWS with auto-scaling Docker containers</p>
+            <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png')"><h3>fentoboardimage</h3></div>
+            <p>Python library for generating customizable chessboard images from FEN notation</p>
             <div class="proj-tech">
-              <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
+              <span>Python</span><span>Pillow</span><span>PyPI</span>
             </div>
             <div class="proj-links">
-              <a href="https://stitch.reed.codes">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
+              <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
             </div>
           </div>
           <div class="proj-expanded">
-            <img src="./images/stitch.png" alt="Stitch" />
+            <img src="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png" alt="Fen To Board Image" />
             <div class="proj-expanded-content">
-              <h3>Stitch</h3>
-              <p>A full-stack video rendering platform that allows users to easily create and compile videos from Twitch.TV content. The system leverages AWS infrastructure (ECS, ECR) to dynamically spin up Docker containers that handle rendering jobs, enabling cost-effective scaling based on demand. Users can select clips, add transitions, and queue renders through a React frontend, while the Flask backend manages job orchestration and storage.</p>
+              <h3>fentoboardimage</h3>
+              <p>A Python library published on PyPI that generates PIL/Pillow images of chessboards from FEN (Forsyth-Edwards Notation) strings. Highly configurable with options for board colors, piece sets, square highlighting, arrows for move annotations, and coordinate labels. Used by chess content creators, analysis tools, and as a component in other chess-related projects.</p>
               <div class="proj-tech">
-                <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span><span>ECS</span><span>ECR</span>
+                <span>Python</span><span>Pillow</span><span>PyPI</span><span>FEN</span><span>Chess</span>
               </div>
               <div class="proj-links">
-                <a href="https://stitch.reed.codes">Demo</a>
+                <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
+                <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
               </div>
             </div>
           </div>
@@ -106,6 +108,34 @@
               </div>
               <div class="proj-links">
                 <a href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="proj" data-img="./images/van.png">
+          <div class="proj-row">
+            <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
+            <p>Minimal 2D game engine with P2P networking and gamepad support</p>
+            <div class="proj-tech">
+              <span>TypeScript</span><span>WebRTC</span><span>Canvas</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.reed.codes/subpages/van/airshot/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+            </div>
+          </div>
+          <div class="proj-expanded">
+            <img src="./images/van.png" alt="Van" />
+            <div class="proj-expanded-content">
+              <h3>Van Engine</h3>
+              <p>A lightweight 2D game engine built in TypeScript, designed for rapid prototyping and browser-based games. Features include peer-to-peer multiplayer via WebRTC (no server required), gamepad support for local multiplayer, a component-based entity system, and Canvas rendering. Includes a visual editor for creating and testing game scenes. Several demo games showcase the engine's capabilities.</p>
+              <div class="proj-tech">
+                <span>TypeScript</span><span>WebRTC</span><span>Canvas</span><span>Gamepad API</span><span>P2P</span>
+              </div>
+              <div class="proj-links">
+                <a href="https://www.reed.codes/subpages/van/airshot/">Airshot Demo</a>
+                <a href="https://www.reed.codes/subpages/van/chess/">Chess Demo</a>
+                <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
               </div>
             </div>
           </div>
@@ -139,33 +169,6 @@
             </div>
           </div>
         </article>
-        <article class="proj" data-img="./images/citizenshipio.png">
-          <div class="proj-row">
-            <div class="proj-name" style="background-image: url('./images/citizenshipio.png')"><h3>Citizen</h3></div>
-            <p>Quiz framework with secure authentication using salted SHA-256 hashing</p>
-            <div class="proj-tech">
-              <span>React</span><span>Python</span><span>SQLite</span>
-            </div>
-            <div class="proj-links">
-              <a href="https://citizen.reed.codes/en/">Demo</a>
-              <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
-            </div>
-          </div>
-          <div class="proj-expanded">
-            <img src="./images/citizenshipio.png" alt="Citizen" />
-            <div class="proj-expanded-content">
-              <h3>Citizen</h3>
-              <p>A quiz application framework originally built to help users study for citizenship tests. Features a secure authentication system with salted SHA-256 password hashing and session tokens. The React frontend provides an intuitive quiz interface with progress tracking, while the Python backend handles user management and quiz data stored in SQLite.</p>
-              <div class="proj-tech">
-                <span>React</span><span>Python</span><span>SQLite</span><span>SHA-256</span><span>REST API</span>
-              </div>
-              <div class="proj-links">
-                <a href="https://citizen.reed.codes/en/">Demo</a>
-                <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
-              </div>
-            </div>
-          </div>
-        </article>
         <article class="proj" data-img="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png">
           <div class="proj-row">
             <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png')"><h3>DaMa</h3></div>
@@ -191,84 +194,27 @@
             </div>
           </div>
         </article>
-        <article class="proj" data-img="./images/twitchsurfer.png">
+        <article class="proj" data-img="./images/stitch.png">
           <div class="proj-row">
-            <div class="proj-name" style="background-image: url('./images/twitchsurfer.png')"><h3>Twitch Surfer</h3></div>
-            <p>Interactive TV-style channel guide for browsing Twitch streamer schedules</p>
+            <div class="proj-name" style="background-image: url('./images/stitch.png')"><h3>Stitch</h3></div>
+            <p>Video rendering pipeline for Twitch content using AWS with auto-scaling Docker containers</p>
             <div class="proj-tech">
-              <span>React</span><span>Python</span><span>Twitch API</span>
+              <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
             </div>
             <div class="proj-links">
-              <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
-              <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+              <a href="https://stitch.reed.codes">Demo</a>
             </div>
           </div>
           <div class="proj-expanded">
-            <img src="./images/twitchsurfer.png" alt="Twitch Surfer" />
+            <img src="./images/stitch.png" alt="Stitch" />
             <div class="proj-expanded-content">
-              <h3>Twitch Surfer</h3>
-              <p>An interactive schedule viewer for Twitch streamers, inspired by traditional television channel guides. Browse upcoming streams in a familiar grid layout, filter by game or category, and discover new content based on your viewing history. The Python backend aggregates schedule data from the Twitch API, while the React frontend provides smooth navigation and real-time updates.</p>
+              <h3>Stitch</h3>
+              <p>A full-stack video rendering platform that allows users to easily create and compile videos from Twitch.TV content. The system leverages AWS infrastructure (ECS, ECR) to dynamically spin up Docker containers that handle rendering jobs, enabling cost-effective scaling based on demand. Users can select clips, add transitions, and queue renders through a React frontend, while the Flask backend manages job orchestration and storage.</p>
               <div class="proj-tech">
-                <span>React</span><span>Python</span><span>Twitch API</span><span>Schedule Grid</span>
+                <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span><span>ECS</span><span>ECR</span>
               </div>
               <div class="proj-links">
-                <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
-                <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="proj" data-img="./images/van.png">
-          <div class="proj-row">
-            <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
-            <p>Minimal 2D game engine with P2P networking and gamepad support</p>
-            <div class="proj-tech">
-              <span>TypeScript</span><span>WebRTC</span><span>Canvas</span>
-            </div>
-            <div class="proj-links">
-              <a href="https://www.reed.codes/subpages/van/airshot/">Demo</a>
-              <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
-            </div>
-          </div>
-          <div class="proj-expanded">
-            <img src="./images/van.png" alt="Van" />
-            <div class="proj-expanded-content">
-              <h3>Van Engine</h3>
-              <p>A lightweight 2D game engine built in TypeScript, designed for rapid prototyping and browser-based games. Features include peer-to-peer multiplayer via WebRTC (no server required), gamepad support for local multiplayer, a component-based entity system, and Canvas rendering. Includes a visual editor for creating and testing game scenes. Several demo games showcase the engine's capabilities.</p>
-              <div class="proj-tech">
-                <span>TypeScript</span><span>WebRTC</span><span>Canvas</span><span>Gamepad API</span><span>P2P</span>
-              </div>
-              <div class="proj-links">
-                <a href="https://www.reed.codes/subpages/van/airshot/">Airshot Demo</a>
-                <a href="https://www.reed.codes/subpages/van/chess/">Chess Demo</a>
-                <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
-              </div>
-            </div>
-          </div>
-        </article>
-        <article class="proj" data-img="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png">
-          <div class="proj-row">
-            <div class="proj-name" style="background-image: url('https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png')"><h3>fentoboardimage</h3></div>
-            <p>Python library for generating customizable chessboard images from FEN notation</p>
-            <div class="proj-tech">
-              <span>Python</span><span>Pillow</span><span>PyPI</span>
-            </div>
-            <div class="proj-links">
-              <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
-              <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
-            </div>
-          </div>
-          <div class="proj-expanded">
-            <img src="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png" alt="Fen To Board Image" />
-            <div class="proj-expanded-content">
-              <h3>fentoboardimage</h3>
-              <p>A Python library published on PyPI that generates PIL/Pillow images of chessboards from FEN (Forsyth-Edwards Notation) strings. Highly configurable with options for board colors, piece sets, square highlighting, arrows for move annotations, and coordinate labels. Used by chess content creators, analysis tools, and as a component in other chess-related projects.</p>
-              <div class="proj-tech">
-                <span>Python</span><span>Pillow</span><span>PyPI</span><span>FEN</span><span>Chess</span>
-              </div>
-              <div class="proj-links">
-                <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
-                <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
+                <a href="https://stitch.reed.codes">Demo</a>
               </div>
             </div>
           </div>
