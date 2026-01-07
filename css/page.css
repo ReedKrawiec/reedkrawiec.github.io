@@ -490,24 +490,20 @@ html{
 
 /* Edit mode - move lander content to bottom-left */
 body.gol-edit-mode .lander-content {
-  align-items: flex-end;
-  justify-content: flex-start;
-  padding: 3em;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 2em;
   pointer-events: none;
+  flex-direction: column;
 }
 
 body.gol-edit-mode .lander-content .identity,
 body.gol-edit-mode .lander-content .about {
   pointer-events: auto;
-}
-
-body.gol-edit-mode .lander-content .identity {
-  margin-bottom: 1em;
+  transform: scale(0.6);
+  transform-origin: bottom left;
 }
 
 body.gol-edit-mode .lander-content .about {
   box-shadow: none;
-  width: 18em;
-  height: auto;
-  margin-bottom: 1em;
 }
