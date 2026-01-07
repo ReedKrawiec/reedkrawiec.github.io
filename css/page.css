@@ -497,13 +497,17 @@ body.gol-edit-mode .lander-content {
   flex-direction: column;
 }
 
-body.gol-edit-mode .lander-content .identity,
-body.gol-edit-mode .lander-content .about {
+body.gol-edit-mode .lander-content .identity {
   pointer-events: auto;
-  transform: scale(0.6);
+  transform: scale(0.5);
   transform-origin: bottom left;
+  margin-bottom: -3em;
 }
 
 body.gol-edit-mode .lander-content .about {
+  pointer-events: auto;
+  transform: scale(0.5);
+  transform-origin: bottom left;
   box-shadow: none;
+  margin-bottom: -5em;
 }
