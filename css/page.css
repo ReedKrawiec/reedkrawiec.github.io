@@ -173,69 +173,128 @@ html{
 }
 
 
-.projects{
+/* Projects Section */
+.projects {
   background-color: var(--dark-purple);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 2em;
-  flex-wrap: wrap;
+  padding: 4em 2em;
 }
 
-.projects > .proj{
-  width: 18em;
-  background-color: var(--dark-gray);
-  border-radius: 1em;
-  color: var(--white);
-  margin: 2em;
-  display: flex;
+.projects-header {
+  max-width: 70em;
+  margin: 0 auto 3em;
+}
+
+.projects-header h2 {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  font-size: 2.5em;
   font-weight: bold;
+  padding: 0.3em 0.6em;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(20em, 1fr));
+  gap: 2em;
+  max-width: 70em;
+  margin: 0 auto;
+}
+
+.proj {
+  background-color: var(--dark-gray);
+  display: flex;
   flex-direction: column;
-  box-shadow: #17e3f0 1.5em 1.5em;
+  transition: transform 0.2s ease;
+  overflow: hidden;
 }
 
-.proj > img{
-  width:100%;
-  border-radius: 1em 1em 0em 0em;
-  height:100%;
+.proj:hover {
+  transform: translateY(-0.3em);
 }
 
-.proj > img.half-img{
-  width:50%
+.proj-visual {
+  height: 10em;
+  overflow: hidden;
+  background-color: #2a2328;
 }
 
-.proj-content{
-  padding:1em;
-}
-
-.proj-content > h2{
- font-size:3em;
-}
-
-.proj-content > p{
-  line-height: 1.6;
-}
-
-.proj-content > br{
-  height: 0.5em;
+.proj-visual img {
   width: 100%;
-  content: "";
-  margin-top: 0;
-  display: block;
-  background-color: var(--white);
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
 }
 
-.proj-content h2{
-  margin-bottom:.5em;  
+.proj:hover .proj-visual img {
+  transform: scale(1.05);
 }
 
-.proj-content > br, .proj-content > p{
-  margin-bottom:1.75em;
+.proj-content {
+  padding: 1.5em;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
 }
 
-.proj-link{
-  color:var(--light-blue);
-  text-decoration:none;
+.proj-content h3 {
+  font-size: 1.4em;
+  font-weight: bold;
+  color: var(--light-teal);
+  margin-bottom: 0.6em;
+}
+
+.proj-content > p {
+  color: var(--white);
+  line-height: 1.5;
+  font-size: 0.9em;
+  flex: 1;
+  margin-bottom: 1em;
+}
+
+.proj-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4em;
+  margin-bottom: 1em;
+}
+
+.proj-tech span {
+  background-color: var(--teal);
+  color: var(--light-teal);
+  font-size: 0.7em;
+  font-weight: bold;
+  padding: 0.3em 0.6em;
+}
+
+.proj-links {
+  display: flex;
+  gap: 1em;
+  margin-top: auto;
+  padding-top: 0.5em;
+  border-top: 1px solid var(--dark-purple);
+}
+
+.proj-links a {
+  color: var(--orange);
+  text-decoration: none;
+  font-size: 0.85em;
+  font-weight: bold;
+  transition: color 0.2s ease;
+}
+
+.proj-links a:hover {
+  color: var(--light-red);
+}
+
+@media (max-width: 600px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .projects-header h2 {
+    font-size: 1.8em;
+  }
 }
 
 #gameoflife{

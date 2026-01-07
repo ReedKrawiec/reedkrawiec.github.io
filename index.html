@@ -39,103 +39,136 @@
       <canvas id="gameoflife"></canvas>
     </section>
     <section class="projects">
-      <div class="proj">
-        <img src="./images/stitch.png" />
-        <div class="proj-content">
-          <h2>Stitch</h2>
-          <br>
-          <p>Easily create and render videos using content from Twitch.TV. Uses AWS (ECS, ECR) to start up docker images that render jobs cheaply and quickly to scale. Flask backend / React frontend.</p>
-          <p>
-            <a class="proj-link" href="https://stitch.reed.codes">Demo</a>
-          </p>
-        </div>
+      <div class="projects-header">
+        <h2>Projects</h2>
       </div>
-      <div class="proj">
-        <img src="./images/boardexplorer.png" />
-        <div class="proj-content">
-          <h2>Board Explorer</h2>
-          <br>
-          <p>A neural network (YOLOv5 in Pytorch) chrome extension that replaces static chessboards on your screen with playable boards that have engine support.</p>
-          <p>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="./images/buzz.png" />
-        <div class="proj-content">
-          <h2>Buzz</h2>
-          <br>
-          <p>Android app / Web. app that lets you use your phone's microphone to detect loud sounds (such as a laundry machine's buzz). Flask / React.</p>
-          <p>
-            <a class="proj-link" href="https://buzz.reed.codes">Demo</a>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/Buzz">Github</a>
-            <a class="proj-link" href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Playstore</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="./images/citizenshipio.png" />
-        <div class="proj-content">
-          <h2>Citizen</h2>
-          <br>
-          <p>Quiz framework using React, Python and SQL (Sqlite). Server login system implemented using sha-256, randomly generated salts, and login tokens.
-            Server login system implemented using sha-256, randomly generated salts, and login tokens.
-          </p>
-          <p>
-            <a class="proj-link" href="https://citizen.reed.codes/en/">Demo</a>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/Citizen">Github</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png" />
-        <div class="proj-content">
-          <h2>DaMa</h2>
-          <br>
-          <p>Generate training data easily using Pillow and json configuration. Used to generate the 8000+ image dataset used to train Board Explorer!</p>
-          <p>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/DaMa">Github</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="./images/twitchsurfer.png" />
-        <div class="proj-content">
-          <h2>Twitch Surfer</h2>
-          <br>
-          <p>An interactive streamer schedule viewer for Twitch. Similar to channel guides on Television. Created with React and Python</p>
-          <p>
-            <a class="proj-link" href="https://www.reed.codes/twitchsurfer/">Demo</a>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="./images/van.png" />
-        <div class="proj-content">
-          <h2>Van</h2>
-          <br>
-          <p>Simplistic Typescript 2D game engine. P2P Networking and Gamepad support.</p>
-          <p>
-            <a class="proj-link" href="https://www.reed.codes/subpages/van/airshot/">Demo1</a>
-            <a class="proj-link" href="https://www.reed.codes/subpages/van/chess/">Demo2</a>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
-          </p>
-        </div>
-      </div>
-      <div class="proj">
-        <img src="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png" />
-        <div class="proj-content">
-          <h2 style="font-size: 2em;">Fen To Board Image</h2>
-          <br>
-          <p>Python library to generate PIL images containing easily configured chessboards.</p>
-          <p>
-            <a class="proj-link" href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
-            <a class="proj-link" href="https://pypi.org/project/fentoboardimage/">PyPi</a>
-          </p>
-        </div>
-      </div>
+      <div class="projects-grid">
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/stitch.png" alt="Stitch" />
+          </div>
+          <div class="proj-content">
+            <h3>Stitch</h3>
+            <p>Video rendering pipeline for Twitch content using AWS (ECS/ECR) with auto-scaling Docker containers.</p>
+            <div class="proj-tech">
+              <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://stitch.reed.codes">Demo</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/boardexplorer.png" alt="Board Explorer" />
+          </div>
+          <div class="proj-content">
+            <h3>Board Explorer</h3>
+            <p>Chrome extension using YOLOv5 neural network to detect and replace static chessboard images with interactive, engine-powered boards.</p>
+            <div class="proj-tech">
+              <span>PyTorch</span><span>YOLOv5</span><span>Chrome</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/Board-Explorer">Github</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/buzz.png" alt="Buzz" />
+          </div>
+          <div class="proj-content">
+            <h3>Buzz</h3>
+            <p>Cross-platform app for detecting loud sounds (laundry buzzer, etc.) using your phone's microphone.</p>
+            <div class="proj-tech">
+              <span>Android</span><span>Flask</span><span>React</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://buzz.reed.codes">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
+              <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/citizenshipio.png" alt="Citizen" />
+          </div>
+          <div class="proj-content">
+            <h3>Citizen</h3>
+            <p>Quiz framework with secure authentication using salted SHA-256 hashing and session tokens.</p>
+            <div class="proj-tech">
+              <span>React</span><span>Python</span><span>SQLite</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://citizen.reed.codes/en/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Citizen">Github</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="https://raw.githubusercontent.com/ReedKrawiec/DaMa/main/docs/header.png" alt="DaMa" />
+          </div>
+          <div class="proj-content">
+            <h3>DaMa</h3>
+            <p>Training data generator using Pillow. Created the 8000+ image dataset for Board Explorer.</p>
+            <div class="proj-tech">
+              <span>Python</span><span>Pillow</span><span>ML</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/DaMa">Github</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/twitchsurfer.png" alt="Twitch Surfer" />
+          </div>
+          <div class="proj-content">
+            <h3>Twitch Surfer</h3>
+            <p>Interactive TV-style channel guide for browsing Twitch streamer schedules.</p>
+            <div class="proj-tech">
+              <span>React</span><span>Python</span><span>Twitch API</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.reed.codes/twitchsurfer/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/TwitchSurfer">Github</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="./images/van.png" alt="Van" />
+          </div>
+          <div class="proj-content">
+            <h3>Van</h3>
+            <p>Minimal 2D game engine with P2P networking and gamepad support.</p>
+            <div class="proj-tech">
+              <span>TypeScript</span><span>WebRTC</span><span>Canvas</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://www.reed.codes/subpages/van/airshot/">Demo</a>
+              <a href="https://github.com/ReedKrawiec/Van-Editor">Github</a>
+            </div>
+          </div>
+        </article>
+        <article class="proj">
+          <div class="proj-visual">
+            <img src="https://raw.githubusercontent.com/reedkrawiec/fenToBoardImage/main/documentation/logo.png" alt="Fen To Board Image" />
+          </div>
+          <div class="proj-content">
+            <h3>fentoboardimage</h3>
+            <p>Python library for generating customizable chessboard images from FEN notation.</p>
+            <div class="proj-tech">
+              <span>Python</span><span>Pillow</span><span>PyPI</span>
+            </div>
+            <div class="proj-links">
+              <a href="https://github.com/ReedKrawiec/Fen-To-Board-Image">Github</a>
+              <a href="https://pypi.org/project/fentoboardimage/">PyPi</a>
+            </div>
+          </div>
+        </article>
       </div>
     </section>
     <script src="./scripts/page.js" async defer></script>
