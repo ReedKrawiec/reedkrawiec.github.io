@@ -75,19 +75,135 @@ const render = (shouldUpdate) => {
 
 let counter = 0;
 
-gameoflife.addEventListener("click", (event)=>{
-  //sets the cell corresponding to the mouse click to alive
-  let x = Math.floor(event.offsetX/window.innerWidth * width);
-  let y = Math.floor(event.offsetY/window.innerHeight * height);
-  console.log(x, y);
-  if(grid[x][y] === 0){
-    grid[x][y] = 1;
-  } else {
-    grid[x][y] = 0;
+// Pattern library
+const patterns = {
+  glider: [[0,1,0],[0,0,1],[1,1,1]],
+  lwss: [[0,1,0,0,1],[1,0,0,0,0],[1,0,0,0,1],[1,1,1,1,0]],
+  blinker: [[1],[1],[1]],
+  toad: [[0,1,1,1],[1,1,1,0]],
+  beacon: [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]],
+  pulsar: [
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0]
+  ],
+  glidergun: [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+    [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  ]
+};
+
+let editMode = false;
+let selectedPattern = null;
+let isDrawing = false;
+let drawValue = 1;
+
+const editBtn = document.getElementById('gol-edit');
+const patternsBtn = document.getElementById('gol-patterns-btn');
+const patternsMenu = document.getElementById('gol-patterns-menu');
+const patternsContainer = document.getElementById('gol-patterns');
+
+const placePattern = (pattern, startX, startY) => {
+  for (let y = 0; y < pattern.length; y++) {
+    for (let x = 0; x < pattern[y].length; x++) {
+      const gridX = startX + x;
+      const gridY = startY + y;
+      if (gridX >= 0 && gridX < width && gridY >= 0 && gridY < height) {
+        grid[gridX][gridY] = pattern[y][x];
+      }
+    }
   }
   render(false);
-  console.log(JSON.stringify(grid));
-})
+};
+
+const getGridCoords = (event) => {
+  const x = Math.floor(event.offsetX / window.innerWidth * width);
+  const y = Math.floor(event.offsetY / window.innerHeight * height);
+  return { x, y };
+};
+
+gameoflife.addEventListener("mousedown", (event) => {
+  if (!editMode) return;
+
+  const { x, y } = getGridCoords(event);
+
+  if (selectedPattern) {
+    placePattern(patterns[selectedPattern], x, y);
+    selectedPattern = null;
+    gameoflife.style.cursor = 'crosshair';
+  } else {
+    isDrawing = true;
+    drawValue = grid[x][y] === 0 ? 1 : 0;
+    grid[x][y] = drawValue;
+    render(false);
+  }
+});
+
+gameoflife.addEventListener("mousemove", (event) => {
+  if (!editMode || !isDrawing) return;
+
+  const { x, y } = getGridCoords(event);
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    grid[x][y] = drawValue;
+    render(false);
+  }
+});
+
+gameoflife.addEventListener("mouseup", () => {
+  isDrawing = false;
+});
+
+gameoflife.addEventListener("mouseleave", () => {
+  isDrawing = false;
+});
+
+editBtn.addEventListener('click', () => {
+  editMode = !editMode;
+  editBtn.classList.toggle('active', editMode);
+  gameoflife.classList.toggle('edit-mode', editMode);
+  patternsContainer.style.display = editMode ? 'block' : 'none';
+
+  if (editMode) {
+    stopSimulation();
+  }
+});
+
+patternsBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  patternsMenu.classList.toggle('show');
+});
+
+patternsMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectedPattern = btn.dataset.pattern;
+    patternsMenu.classList.remove('show');
+    gameoflife.style.cursor = 'copy';
+  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!patternsContainer.contains(e.target)) {
+    patternsMenu.classList.remove('show');
+  }
+});
 
 render(false);
 
@@ -142,5 +258,8 @@ resetBtn.addEventListener('click', () => {
   counter = 0;
   render(false);
 });
+
+// Hide patterns menu initially
+patternsContainer.style.display = 'none';
 
 startSimulation();

@@ -219,18 +219,24 @@ html{
 .proj-name {
   background-size: cover;
   background-position: center;
-  padding: 0.8em 1em;
-  min-width: 10em;
+  padding: 0;
+  min-width: 12em;
+  min-height: 5em;
   display: flex;
-  align-items: center;
+  align-items: stretch;
+  position: relative;
 }
 
 .proj-name h3 {
   font-size: 1.1em;
   font-weight: bold;
-  color: var(--light-teal);
+  color: var(--white);
   white-space: nowrap;
-  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+  background: rgba(31, 26, 30, 0.75);
+  padding: 1.2em 1em;
+  width: 100%;
+  display: flex;
+  align-items: center;
 }
 
 .proj > p {
@@ -353,4 +359,59 @@ html{
   background-color: var(--orange);
   color: var(--dark-gray);
   border-color: var(--orange);
+}
+
+.gol-patterns {
+  position: relative;
+}
+
+.gol-patterns-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.3em;
+  background-color: var(--dark-gray);
+  border: 2px solid var(--teal);
+  flex-direction: column;
+  min-width: 12em;
+}
+
+.gol-patterns-menu.show {
+  display: flex;
+}
+
+.gol-patterns-menu button {
+  font-family: "Fira Code", monospace;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 0.6em 1em;
+  border: none;
+  border-bottom: 1px solid var(--teal);
+  cursor: pointer;
+  background-color: var(--dark-gray);
+  color: var(--light-teal);
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.gol-patterns-menu button:last-child {
+  border-bottom: none;
+}
+
+.gol-patterns-menu button:hover {
+  background-color: var(--teal);
+  color: var(--dark-gray);
+}
+
+#gameoflife.edit-mode {
+  cursor: crosshair;
+}
+
+.gol-controls .edit-indicator {
+  display: none;
+  font-size: 0.7em;
+  color: var(--orange);
+  padding: 0.5em;
+  align-items: center;
 }
