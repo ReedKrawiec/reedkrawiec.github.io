@@ -188,6 +188,7 @@ gameoflife.addEventListener("mousemove", (event) => {
   if (!editMode) {
     if (x >= 0 && x < width && y >= 0 && y < height) {
       grid[x][y] = 1;
+      render(false);
     }
     return;
   }
