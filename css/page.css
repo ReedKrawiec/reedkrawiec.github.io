@@ -173,69 +173,222 @@ html{
 }
 
 
-.projects{
+/* Projects Section */
+.projects {
   background-color: var(--dark-purple);
+  padding: 4em 2em;
+}
+
+.projects-header {
+  max-width: 60em;
+  margin: 0 auto 2em;
+}
+
+.projects-header h2 {
+  display: inline-block;
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  font-size: 2em;
+  font-weight: bold;
+  padding: 0.3em 0.6em;
+}
+
+.projects-list {
+  max-width: 60em;
+  margin: 0 auto;
+}
+
+.proj {
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+}
+
+.proj:last-child {
+  border-bottom: none;
+}
+
+.proj-row {
+  display: grid;
+  grid-template-columns: 12em 1fr auto auto;
+  align-items: center;
+  gap: 1.5em;
+  padding: 0;
+  transition: background-color 0.2s ease;
+}
+
+.proj-row:hover {
+  background-color: rgba(255,255,255,0.03);
+}
+
+.proj-name {
+  background-size: cover;
+  background-position: center;
+  padding: 0;
+  min-width: 12em;
+  min-height: 5em;
+  display: flex;
+  align-items: stretch;
+  position: relative;
+}
+
+.proj-name h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  color: var(--white);
+  white-space: nowrap;
+  background: rgba(31, 26, 30, 0.75);
+  padding: 1.2em 1em;
+  width: 100%;
   display: flex;
   align-items: center;
-  justify-content: center;
+}
+
+.proj-row > p {
+  color: var(--white);
+  font-size: 0.85em;
+  line-height: 1.4;
+  opacity: 0.8;
+}
+
+.proj-expanded {
+  display: none;
+  grid-template-columns: 20em 1fr;
+  gap: 2em;
   padding: 2em;
+  background-color: rgba(0,0,0,0.2);
+  animation: expandIn 0.3s ease;
+}
+
+@keyframes expandIn {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
+  }
+}
+
+.proj.expanded .proj-expanded {
+  display: grid;
+}
+
+.proj-expanded img {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  border: 2px solid var(--teal);
+}
+
+.proj-expanded-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+}
+
+.proj-expanded-content h3 {
+  font-size: 1.5em;
+  font-weight: bold;
+  color: var(--light-teal);
+}
+
+.proj-expanded-content > p {
+  color: var(--white);
+  font-size: 0.9em;
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+.proj-expanded-content .proj-tech {
   flex-wrap: wrap;
 }
 
-.projects > .proj{
-  width: 18em;
-  background-color: var(--dark-gray);
-  border-radius: 1em;
-  color: var(--white);
-  margin: 2em;
+.proj-expanded-content .proj-links {
+  margin-top: auto;
+}
+
+.proj-tech {
   display: flex;
+  gap: 0.4em;
+}
+
+.proj-tech span {
+  background-color: var(--teal);
+  color: var(--light-teal);
+  font-size: 0.65em;
   font-weight: bold;
-  flex-direction: column;
-  box-shadow: #17e3f0 1.5em 1.5em;
+  padding: 0.3em 0.5em;
+  white-space: nowrap;
 }
 
-.proj > img{
-  width:100%;
-  border-radius: 1em 1em 0em 0em;
-  height:100%;
+.proj-links {
+  display: flex;
+  gap: 1em;
 }
 
-.proj > img.half-img{
-  width:50%
+.proj-links a {
+  color: var(--orange);
+  text-decoration: none;
+  font-size: 0.8em;
+  font-weight: bold;
+  transition: color 0.2s ease;
+  white-space: nowrap;
 }
 
-.proj-content{
-  padding:1em;
+.proj-links a:hover {
+  color: var(--light-red);
 }
 
-.proj-content > h2{
- font-size:3em;
-}
+@media (max-width: 800px) {
+  .proj-row {
+    grid-template-columns: 1fr;
+    gap: 0.6em;
+    padding: 0;
+  }
 
-.proj-content > p{
-  line-height: 1.6;
-}
+  .proj-name {
+    padding: 1em;
+    min-height: 4em;
+  }
 
-.proj-content > br{
-  height: 0.5em;
-  width: 100%;
-  content: "";
-  margin-top: 0;
-  display: block;
-  background-color: var(--white);
-}
+  .proj-row > p,
+  .proj-row .proj-tech,
+  .proj-row .proj-links {
+    padding: 0 1em;
+  }
 
-.proj-content h2{
-  margin-bottom:.5em;  
-}
+  .proj-row .proj-links {
+    padding-bottom: 1em;
+  }
 
-.proj-content > br, .proj-content > p{
-  margin-bottom:1.75em;
-}
+  .proj-tech {
+    flex-wrap: wrap;
+  }
 
-.proj-link{
-  color:var(--light-blue);
-  text-decoration:none;
+  .proj-expanded {
+    grid-template-columns: 1fr;
+    padding: 1.5em;
+  }
+
+  .proj-expanded img {
+    max-height: 15em;
+    object-fit: cover;
+  }
+
+  .projects-header h2 {
+    font-size: 1.6em;
+  }
+
+  .gol-controls {
+    top: 1em;
+    right: 1em;
+  }
+
+  .gol-controls button {
+    font-size: 0.7em;
+    padding: 0.4em 0.7em;
+  }
 }
 
 #gameoflife{
@@ -245,4 +398,98 @@ html{
   width:100%;
   height:100%;
   z-index:1;
+}
+
+.gol-controls {
+  position: absolute;
+  top: 1.5em;
+  right: 1.5em;
+  z-index: 10;
+  display: flex;
+  gap: 0.5em;
+}
+
+.gol-controls button {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--dark-gray);
+  color: var(--light-teal);
+  border: 2px solid var(--teal);
+}
+
+.gol-controls button:hover {
+  background-color: var(--teal);
+  color: var(--dark-gray);
+}
+
+.gol-controls button.active {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  border-color: var(--orange);
+}
+
+.gol-patterns {
+  position: relative;
+}
+
+.gol-patterns-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  margin-top: 0.3em;
+  background-color: var(--dark-gray);
+  border: 2px solid var(--teal);
+  flex-direction: column;
+  min-width: 12em;
+}
+
+.gol-patterns-menu.show {
+  display: flex;
+}
+
+.gol-patterns-menu button {
+  font-family: "Fira Code", monospace;
+  font-size: 0.75em;
+  font-weight: bold;
+  padding: 0.6em 1em;
+  border: none;
+  border-bottom: 1px solid var(--teal);
+  cursor: pointer;
+  background-color: var(--dark-gray);
+  color: var(--light-teal);
+  text-align: left;
+  transition: all 0.2s ease;
+}
+
+.gol-patterns-menu button:last-child {
+  border-bottom: none;
+}
+
+.gol-patterns-menu button:hover {
+  background-color: var(--teal);
+  color: var(--dark-gray);
+}
+
+#gameoflife.edit-mode {
+  cursor: crosshair;
+}
+
+.gol-controls .edit-indicator {
+  display: none;
+  font-size: 0.7em;
+  color: var(--orange);
+  padding: 0.5em;
+  align-items: center;
+}
+
+/* Edit mode - make lander content transparent */
+body.gol-edit-mode .lander-content {
+  pointer-events: none;
+  opacity: 0.15;
 }

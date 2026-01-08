@@ -71,31 +71,242 @@ const render = (shouldUpdate) => {
       }
     }
   }
+
+  // Draw pattern preview
+  if (editMode && selectedPattern && previewX >= 0 && previewY >= 0) {
+    const pattern = patterns[selectedPattern];
+    ctx.fillStyle = "rgba(255, 157, 0, 0.6)"; // Orange preview color
+    for (let y = 0; y < pattern.length; y++) {
+      for (let x = 0; x < pattern[y].length; x++) {
+        if (pattern[y][x] === 1) {
+          const gridX = previewX + x;
+          const gridY = previewY + y;
+          if (gridX >= 0 && gridX < width && gridY >= 0 && gridY < height) {
+            ctx.fillRect(gridX * squareSize, gridY * squareSize, squareSize, squareSize);
+          }
+        }
+      }
+    }
+  }
 }
 
 let counter = 0;
 
-gameoflife.addEventListener("click", (event)=>{
-  //sets the cell corresponding to the mouse click to alive
-  let x = Math.floor(event.offsetX/window.innerWidth * width);
-  let y = Math.floor(event.offsetY/window.innerHeight * height);
-  console.log(x, y);
-  if(grid[x][y] === 0){
-    grid[x][y] = 1;
-  } else {
-    grid[x][y] = 0;
+// Pattern library
+const patterns = {
+  glider: [[0,1,0],[0,0,1],[1,1,1]],
+  lwss: [[0,1,0,0,1],[1,0,0,0,0],[1,0,0,0,1],[1,1,1,1,0]],
+  blinker: [[1],[1],[1]],
+  toad: [[0,1,1,1],[1,1,1,0]],
+  beacon: [[1,1,0,0],[1,1,0,0],[0,0,1,1],[0,0,1,1]],
+  pulsar: [
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [1,0,0,0,0,1,0,1,0,0,0,0,1],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,1,1,1,0,0,0,1,1,1,0,0]
+  ],
+  glidergun: [
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1],
+    [1,1,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [1,1,0,0,0,0,0,0,0,0,1,0,0,0,1,0,1,1,0,0,0,0,1,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,1,0,0,0,0,0,1,0,0,0,0,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,1,0,0,0,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0],
+    [0,0,0,0,0,0,0,0,0,0,0,0,1,1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+  ]
+};
+
+let editMode = false;
+let selectedPattern = null;
+let isDrawing = false;
+let drawValue = 1;
+let previewX = -1;
+let previewY = -1;
+
+const editBtn = document.getElementById('gol-edit');
+const patternsBtn = document.getElementById('gol-patterns-btn');
+const patternsMenu = document.getElementById('gol-patterns-menu');
+const patternsContainer = document.getElementById('gol-patterns');
+
+const placePattern = (pattern, startX, startY) => {
+  for (let y = 0; y < pattern.length; y++) {
+    for (let x = 0; x < pattern[y].length; x++) {
+      const gridX = startX + x;
+      const gridY = startY + y;
+      if (gridX >= 0 && gridX < width && gridY >= 0 && gridY < height) {
+        grid[gridX][gridY] = pattern[y][x];
+      }
+    }
   }
   render(false);
-  console.log(JSON.stringify(grid));
-})
+};
+
+const getGridCoords = (event) => {
+  const x = Math.floor(event.offsetX / window.innerWidth * width);
+  const y = Math.floor(event.offsetY / window.innerHeight * height);
+  return { x, y };
+};
+
+gameoflife.addEventListener("mousedown", (event) => {
+  if (!editMode) return;
+
+  const { x, y } = getGridCoords(event);
+
+  if (selectedPattern) {
+    placePattern(patterns[selectedPattern], x, y);
+    selectedPattern = null;
+    previewX = -1;
+    previewY = -1;
+    gameoflife.style.cursor = 'crosshair';
+  } else {
+    isDrawing = true;
+    drawValue = grid[x][y] === 0 ? 1 : 0;
+    grid[x][y] = drawValue;
+    render(false);
+  }
+});
+
+gameoflife.addEventListener("mousemove", (event) => {
+  if (!editMode) return;
+
+  const { x, y } = getGridCoords(event);
+
+  // Update pattern preview position
+  if (selectedPattern) {
+    previewX = x;
+    previewY = y;
+    render(false);
+    return;
+  }
+
+  // Handle drawing
+  if (isDrawing && x >= 0 && x < width && y >= 0 && y < height) {
+    grid[x][y] = drawValue;
+    render(false);
+  }
+});
+
+gameoflife.addEventListener("mouseup", () => {
+  isDrawing = false;
+});
+
+gameoflife.addEventListener("mouseleave", () => {
+  isDrawing = false;
+});
+
+editBtn.addEventListener('click', () => {
+  editMode = !editMode;
+  editBtn.classList.toggle('active', editMode);
+  gameoflife.classList.toggle('edit-mode', editMode);
+  document.body.classList.toggle('gol-edit-mode', editMode);
+  patternsContainer.style.display = editMode ? 'block' : 'none';
+
+  if (editMode) {
+    stopSimulation();
+  }
+});
+
+patternsBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  patternsMenu.classList.toggle('show');
+});
+
+patternsMenu.querySelectorAll('button').forEach(btn => {
+  btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    selectedPattern = btn.dataset.pattern;
+    patternsMenu.classList.remove('show');
+    gameoflife.style.cursor = 'copy';
+  });
+});
+
+document.addEventListener('click', (e) => {
+  if (!patternsContainer.contains(e.target)) {
+    patternsMenu.classList.remove('show');
+  }
+});
 
 render(false);
 
-setInterval(function(){
-  if(counter == 330){
-    grid = JSON.parse(starting);
-    counter = 0;
-  }
+let isPlaying = true;
+let intervalId = null;
+
+const stepBtn = document.getElementById('gol-step');
+const toggleBtn = document.getElementById('gol-toggle');
+const clearBtn = document.getElementById('gol-clear');
+const landerContent = document.querySelector('.lander-content');
+
+const tick = () => {
   counter++;
-  render(true)
-}, 100);
+  render(true);
+};
+
+const startSimulation = () => {
+  if (!intervalId) {
+    intervalId = setInterval(tick, 100);
+  }
+  isPlaying = true;
+  toggleBtn.textContent = 'Pause';
+};
+
+const stopSimulation = () => {
+  if (intervalId) {
+    clearInterval(intervalId);
+    intervalId = null;
+  }
+  isPlaying = false;
+  toggleBtn.textContent = 'Play';
+};
+
+toggleBtn.addEventListener('click', () => {
+  if (isPlaying) {
+    stopSimulation();
+  } else {
+    startSimulation();
+  }
+});
+
+stepBtn.addEventListener('click', () => {
+  stopSimulation();
+  render(true);
+});
+
+clearBtn.addEventListener('click', () => {
+  grid = create2DArray(width, height);
+  counter = 0;
+  render(false);
+});
+
+// Hide patterns menu initially
+patternsContainer.style.display = 'none';
+
+startSimulation();
+
+// Project row expand functionality
+document.querySelectorAll('.proj').forEach(proj => {
+  proj.addEventListener('click', (e) => {
+    // Don't toggle if clicking a link
+    if (e.target.tagName === 'A') return;
+
+    // Close other expanded projects
+    document.querySelectorAll('.proj.expanded').forEach(other => {
+      if (other !== proj) {
+        other.classList.remove('expanded');
+      }
+    });
+
+    // Toggle current project
+    proj.classList.toggle('expanded');
+  });
+});
