@@ -296,8 +296,9 @@ startSimulation();
 // Project row expand functionality
 document.querySelectorAll('.proj').forEach(proj => {
   proj.addEventListener('click', (e) => {
-    // Don't toggle if clicking a link
+    // Don't toggle if clicking a link or thumbnail
     if (e.target.tagName === 'A') return;
+    if (e.target.closest('.proj-thumbs')) return;
 
     // Close other expanded projects
     document.querySelectorAll('.proj.expanded').forEach(other => {
@@ -309,4 +310,51 @@ document.querySelectorAll('.proj').forEach(proj => {
     // Toggle current project
     proj.classList.toggle('expanded');
   });
+});
+
+// Gallery thumbnail click functionality
+document.querySelectorAll('.proj-thumbs img').forEach(thumb => {
+  thumb.addEventListener('click', (e) => {
+    e.stopPropagation();
+    const gallery = thumb.closest('.proj-gallery');
+    const mainImg = gallery.querySelector('.proj-main-img');
+
+    // Update main image
+    mainImg.src = thumb.src;
+    mainImg.alt = thumb.alt;
+
+    // Update active state
+    gallery.querySelectorAll('.proj-thumbs img').forEach(t => t.classList.remove('active'));
+    thumb.classList.add('active');
+  });
+});
+
+// Image modal functionality
+const imageModal = document.getElementById('image-modal');
+const modalImg = imageModal.querySelector('.modal-img');
+const modalClose = imageModal.querySelector('.modal-close');
+
+document.querySelectorAll('.proj-main-img').forEach(img => {
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    imageModal.classList.add('show');
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  imageModal.classList.remove('show');
+});
+
+imageModal.addEventListener('click', (e) => {
+  if (e.target === imageModal) {
+    imageModal.classList.remove('show');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && imageModal.classList.contains('show')) {
+    imageModal.classList.remove('show');
+  }
 });

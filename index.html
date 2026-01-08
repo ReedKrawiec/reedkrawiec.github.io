@@ -99,7 +99,13 @@
             </div>
           </div>
           <div class="proj-expanded">
-            <img src="./images/boardexplorer.png" alt="Board Explorer" />
+            <div class="proj-gallery">
+              <img class="proj-main-img" src="./images/boardexplorer.png" alt="Board Explorer" />
+              <div class="proj-thumbs">
+                <img src="./images/boardexplorer.png" alt="Board Explorer" class="active" />
+                <img src="./images/board explorer BeforeAfter.png" alt="Board Explorer Before/After" />
+              </div>
+            </div>
             <div class="proj-expanded-content">
               <h3>Board Explorer</h3>
               <p>A Chrome extension that uses computer vision to detect static chessboard images on any webpage and replaces them with fully interactive, playable boards. The YOLOv5 neural network (trained in PyTorch) identifies board positions with high accuracy, then converts them to FEN notation. Users can analyze positions with Stockfish engine support, explore variations, and even continue games from screenshots.</p>
@@ -125,7 +131,13 @@
             </div>
           </div>
           <div class="proj-expanded">
-            <img src="./images/van.png" alt="Van" />
+            <div class="proj-gallery">
+              <img class="proj-main-img" src="./images/van.png" alt="Van" />
+              <div class="proj-thumbs">
+                <img src="./images/van.png" alt="Van Game" class="active" />
+                <img src="./images/van_editor.png" alt="Van Editor" />
+              </div>
+            </div>
             <div class="proj-expanded-content">
               <h3>Van Engine</h3>
               <p>A lightweight 2D game engine built in TypeScript, designed for rapid prototyping and browser-based games. Features include peer-to-peer multiplayer via WebRTC (no server required), gamepad support for local multiplayer, a component-based entity system, and Canvas rendering. Includes a visual editor for creating and testing game scenes. Several demo games showcase the engine's capabilities.</p>
@@ -148,13 +160,18 @@
               <span>Android</span><span>Flask</span><span>React</span>
             </div>
             <div class="proj-links">
-              <a href="https://buzz.reed.codes">Demo</a>
               <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
               <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
             </div>
           </div>
           <div class="proj-expanded">
-            <img src="./images/buzz.png" alt="Buzz" />
+            <div class="proj-gallery">
+              <img class="proj-main-img" src="./images/buzz.png" alt="Buzz" />
+              <div class="proj-thumbs">
+                <img src="./images/buzz.png" alt="Buzz Web" class="active" />
+                <img src="./images/Buzz2.jpg" alt="Buzz Mobile" />
+              </div>
+            </div>
             <div class="proj-expanded-content">
               <h3>Buzz</h3>
               <p>A practical utility app that monitors ambient sound levels and sends notifications when loud sounds are detected - perfect for knowing when the laundry is done or the oven timer goes off from another room. Available as both an Android app and web application. The phone acts as a remote microphone, with customizable sensitivity thresholds and notification options.</p>
@@ -162,7 +179,6 @@
                 <span>Android</span><span>Kotlin</span><span>Flask</span><span>React</span><span>WebSockets</span>
               </div>
               <div class="proj-links">
-                <a href="https://buzz.reed.codes">Demo</a>
                 <a href="https://github.com/ReedKrawiec/Buzz">Github</a>
                 <a href="https://play.google.com/store/apps/details?id=codes.reed.dev.buzz">Play Store</a>
               </div>
@@ -202,7 +218,6 @@
               <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span>
             </div>
             <div class="proj-links">
-              <a href="https://stitch.reed.codes">Demo</a>
             </div>
           </div>
           <div class="proj-expanded">
@@ -214,13 +229,16 @@
                 <span>AWS</span><span>Flask</span><span>React</span><span>Docker</span><span>ECS</span><span>ECR</span>
               </div>
               <div class="proj-links">
-                <a href="https://stitch.reed.codes">Demo</a>
               </div>
             </div>
           </div>
         </article>
       </div>
     </section>
+    <div id="image-modal" class="image-modal">
+      <span class="modal-close">&times;</span>
+      <img class="modal-img" src="" alt="" />
+    </div>
     <script src="./scripts/page.js" async defer></script>
   </body>
 </html>
