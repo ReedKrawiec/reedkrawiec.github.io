@@ -162,6 +162,24 @@ const getGridCoords = (event) => {
   return { x, y };
 };
 
+const getGridCoordsFromPage = (event) => {
+  const rect = gameoflife.getBoundingClientRect();
+  const x = Math.floor((event.clientX - rect.left) / rect.width * width);
+  const y = Math.floor((event.clientY - rect.top) / rect.height * height);
+  return { x, y };
+};
+
+// Document-level listener for spawning cells when not in edit mode
+document.addEventListener("mousemove", (event) => {
+  if (editMode) return;
+
+  const { x, y } = getGridCoordsFromPage(event);
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    grid[x][y] = 1;
+    render(false);
+  }
+});
+
 gameoflife.addEventListener("mousedown", (event) => {
   if (!editMode) return;
 
@@ -182,16 +200,9 @@ gameoflife.addEventListener("mousedown", (event) => {
 });
 
 gameoflife.addEventListener("mousemove", (event) => {
-  const { x, y } = getGridCoords(event);
+  if (!editMode) return;
 
-  // When not in edit mode, spawn cells at cursor position
-  if (!editMode) {
-    if (x >= 0 && x < width && y >= 0 && y < height) {
-      grid[x][y] = 1;
-      render(false);
-    }
-    return;
-  }
+  const { x, y } = getGridCoords(event);
 
   // Update pattern preview position
   if (selectedPattern) {
