@@ -370,6 +370,9 @@ if (gravityPlayBtn && projectsSection) {
     const isPlaying = projectsSection.classList.toggle('playing');
     gravityPlayBtn.textContent = isPlaying ? 'Return' : 'Edit';
     document.body.style.overflow = isPlaying ? 'hidden' : '';
+    if (isPlaying && gravityIframe) {
+      gravityIframe.focus();
+    }
   });
 }
 
