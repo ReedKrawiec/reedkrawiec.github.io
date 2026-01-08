@@ -328,3 +328,33 @@ document.querySelectorAll('.proj-thumbs img').forEach(thumb => {
     thumb.classList.add('active');
   });
 });
+
+// Image modal functionality
+const imageModal = document.getElementById('image-modal');
+const modalImg = imageModal.querySelector('.modal-img');
+const modalClose = imageModal.querySelector('.modal-close');
+
+document.querySelectorAll('.proj-main-img').forEach(img => {
+  img.addEventListener('click', (e) => {
+    e.stopPropagation();
+    modalImg.src = img.src;
+    modalImg.alt = img.alt;
+    imageModal.classList.add('show');
+  });
+});
+
+modalClose.addEventListener('click', () => {
+  imageModal.classList.remove('show');
+});
+
+imageModal.addEventListener('click', (e) => {
+  if (e.target === imageModal) {
+    imageModal.classList.remove('show');
+  }
+});
+
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Escape' && imageModal.classList.contains('show')) {
+    imageModal.classList.remove('show');
+  }
+});
