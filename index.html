@@ -57,6 +57,10 @@
     </section>
     <section class="projects">
       <iframe class="gravity-bg" src="./subpages/van/gravity/build/index.html" frameborder="0"></iframe>
+      <div class="gravity-overlay" id="gravity-overlay">
+        <button class="gravity-play-btn" id="gravity-play-btn">Play</button>
+      </div>
+      <div class="gravity-powered">Background powered by <a href="#proj-van" class="van-link">Van</a></div>
       <div class="projects-header">
         <h2>Projects</h2>
       </div>
@@ -119,7 +123,7 @@
             </div>
           </div>
         </article>
-        <article class="proj" data-img="./images/van.png">
+        <article class="proj" id="proj-van" data-img="./images/van.png">
           <div class="proj-row">
             <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
             <p>Minimal 2D game engine with P2P networking and gamepad support</p>

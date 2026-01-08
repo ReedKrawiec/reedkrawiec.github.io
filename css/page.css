@@ -193,6 +193,60 @@ html{
   opacity: 0.4;
 }
 
+.gravity-bg.playing {
+  pointer-events: auto;
+  opacity: 0.6;
+}
+
+.gravity-overlay {
+  position: absolute;
+  top: 1.5em;
+  left: 1.5em;
+  z-index: 2;
+}
+
+.gravity-play-btn {
+  font-family: "Fira Code", monospace;
+  font-size: 0.8em;
+  font-weight: bold;
+  padding: 0.5em 1em;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var(--dark-gray);
+  color: var(--light-teal);
+  border: 2px solid var(--teal);
+}
+
+.gravity-play-btn:hover {
+  background-color: var(--teal);
+  color: var(--dark-gray);
+}
+
+.gravity-overlay.hidden {
+  display: none;
+}
+
+.gravity-powered {
+  position: absolute;
+  bottom: 1.5em;
+  left: 1.5em;
+  z-index: 2;
+  font-size: 0.7em;
+  color: var(--white);
+  opacity: 0.5;
+}
+
+.gravity-powered .van-link {
+  color: var(--orange);
+  text-decoration: none;
+  font-weight: bold;
+}
+
+.gravity-powered .van-link:hover {
+  color: var(--light-red);
+}
+
 .projects-header {
   max-width: 60em;
   margin: 0 auto 2em;

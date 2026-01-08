@@ -358,3 +358,15 @@ document.addEventListener('keydown', (e) => {
     imageModal.classList.remove('show');
   }
 });
+
+// Gravity game play button functionality
+const gravityPlayBtn = document.getElementById('gravity-play-btn');
+const gravityOverlay = document.getElementById('gravity-overlay');
+const gravityBg = document.querySelector('.gravity-bg');
+
+if (gravityPlayBtn && gravityOverlay && gravityBg) {
+  gravityPlayBtn.addEventListener('click', () => {
+    gravityOverlay.classList.add('hidden');
+    gravityBg.classList.add('playing');
+  });
+}
