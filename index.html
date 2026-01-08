@@ -44,7 +44,7 @@
           <div class="buttons">
             <a class="button" href="https://blog.reed.codes/">Blog</a>
             <a class="button" href="https://www.github.com/reedkrawiec">Github</a>
-            <a class="button" href="./assets/resume.pdf">Resume</a>
+            <a class="button" href="https://www.linkedin.com/in/reed-krawiec-647467108/">LinkedIn</a>
           </div>
         </div>
         <section class="about">
@@ -56,6 +56,15 @@
       <canvas id="gameoflife"></canvas>
     </section>
     <section class="projects">
+      <div class="gravity-wrapper">
+        <iframe class="gravity-bg" src="./subpages/van/gravity/build/index.html" frameborder="0"></iframe>
+      </div>
+      <div class="gravity-fill"></div>
+      <div class="gravity-overlay" id="gravity-overlay">
+        <button class="gravity-reset-btn" id="gravity-reset-btn">Reset</button>
+        <button class="gravity-play-btn" id="gravity-play-btn">Edit</button>
+      </div>
+      <div class="gravity-powered">Background powered by <a href="#proj-van" class="van-link">Van</a></div>
       <div class="projects-header">
         <h2>Projects</h2>
       </div>
@@ -118,7 +127,7 @@
             </div>
           </div>
         </article>
-        <article class="proj" data-img="./images/van.png">
+        <article class="proj" id="proj-van" data-img="./images/van.png">
           <div class="proj-row">
             <div class="proj-name" style="background-image: url('./images/van.png')"><h3>Van</h3></div>
             <p>Minimal 2D game engine with P2P networking and gamepad support</p>
