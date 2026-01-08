@@ -488,26 +488,8 @@ html{
   align-items: center;
 }
 
-/* Edit mode - move lander content to bottom-left */
+/* Edit mode - make lander content transparent */
 body.gol-edit-mode .lander-content {
-  align-items: flex-start;
-  justify-content: flex-end;
-  padding: 2em;
   pointer-events: none;
-  flex-direction: column;
-}
-
-body.gol-edit-mode .lander-content .identity {
-  pointer-events: auto;
-  transform: scale(0.5);
-  transform-origin: bottom left;
-  margin-bottom: -3em;
-}
-
-body.gol-edit-mode .lander-content .about {
-  pointer-events: auto;
-  transform: scale(0.5);
-  transform-origin: bottom left;
-  box-shadow: none;
-  margin-bottom: -5em;
+  opacity: 0.15;
 }
