@@ -214,7 +214,7 @@ html{
 .gravity-overlay {
   position: absolute;
   top: 1.5em;
-  left: 1.5em;
+  right: 1.5em;
   z-index: 3;
 }
 
