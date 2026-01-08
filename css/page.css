@@ -216,9 +216,12 @@ html{
   top: 1.5em;
   right: 1.5em;
   z-index: 3;
+  display: flex;
+  gap: 0.5em;
 }
 
-.gravity-play-btn {
+.gravity-play-btn,
+.gravity-reset-btn {
   font-family: "Fira Code", monospace;
   font-size: 0.8em;
   font-weight: bold;
@@ -231,7 +234,8 @@ html{
   border: 2px solid var(--teal);
 }
 
-.gravity-play-btn:hover {
+.gravity-play-btn:hover,
+.gravity-reset-btn:hover {
   background-color: var(--teal);
   color: var(--dark-gray);
 }

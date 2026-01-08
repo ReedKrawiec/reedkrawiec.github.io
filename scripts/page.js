@@ -359,14 +359,22 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Gravity game play/pause button functionality
+// Gravity game edit/return button functionality
 const gravityPlayBtn = document.getElementById('gravity-play-btn');
+const gravityResetBtn = document.getElementById('gravity-reset-btn');
 const projectsSection = document.querySelector('.projects');
+const gravityIframe = document.querySelector('.gravity-bg');
 
 if (gravityPlayBtn && projectsSection) {
   gravityPlayBtn.addEventListener('click', () => {
     const isPlaying = projectsSection.classList.toggle('playing');
-    gravityPlayBtn.textContent = isPlaying ? 'Pause' : 'Play';
+    gravityPlayBtn.textContent = isPlaying ? 'Return' : 'Edit';
     document.body.style.overflow = isPlaying ? 'hidden' : '';
+  });
+}
+
+if (gravityResetBtn && gravityIframe) {
+  gravityResetBtn.addEventListener('click', () => {
+    gravityIframe.src = gravityIframe.src;
   });
 }
