@@ -367,5 +367,6 @@ if (gravityPlayBtn && projectsSection) {
   gravityPlayBtn.addEventListener('click', () => {
     const isPlaying = projectsSection.classList.toggle('playing');
     gravityPlayBtn.textContent = isPlaying ? 'Pause' : 'Play';
+    document.body.style.overflow = isPlaying ? 'hidden' : '';
   });
 }
