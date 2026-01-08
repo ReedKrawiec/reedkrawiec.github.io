@@ -405,8 +405,17 @@ if (gravityResetBtn && gravityIframe) {
 }
 
 // Delay loading gravity iframe to ensure proper dimensions
+const gravityPlaceholder = document.querySelector('.gravity-placeholder');
+
 setTimeout(() => {
   if (gravityIframe && gravityIframe.dataset.src) {
     gravityIframe.src = gravityIframe.dataset.src;
+
+    // Hide placeholder when iframe loads
+    gravityIframe.addEventListener('load', () => {
+      if (gravityPlaceholder) {
+        gravityPlaceholder.classList.add('hidden');
+      }
+    });
   }
-}, 4000);
+}, 1500);
