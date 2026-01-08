@@ -281,16 +281,42 @@ html{
   border: 2px solid var(--teal);
 }
 
-.proj-images {
+.proj-gallery {
   display: flex;
-  gap: 1em;
+  flex-direction: column;
+  gap: 0.5em;
 }
 
-.proj-images img {
-  flex: 1;
-  width: 50%;
-  max-height: 20em;
+.proj-gallery .proj-main-img {
+  width: 100%;
+  max-height: 18em;
   object-fit: contain;
+  border: 2px solid var(--teal);
+}
+
+.proj-thumbs {
+  display: flex;
+  gap: 0.5em;
+}
+
+.proj-thumbs img {
+  width: 4em;
+  height: 4em;
+  object-fit: cover;
+  border: 2px solid var(--dark-gray);
+  cursor: pointer;
+  opacity: 0.6;
+  transition: all 0.2s ease;
+}
+
+.proj-thumbs img:hover {
+  opacity: 1;
+  border-color: var(--light-teal);
+}
+
+.proj-thumbs img.active {
+  opacity: 1;
+  border-color: var(--orange);
 }
 
 .proj-expanded-content {
