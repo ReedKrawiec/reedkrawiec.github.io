@@ -209,6 +209,7 @@ html{
   border: none;
   pointer-events: none;
   opacity: 0.4;
+  background-color: #000;
 }
 
 .projects.playing .gravity-bg {
