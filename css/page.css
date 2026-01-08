@@ -281,6 +281,18 @@ html{
   border: 2px solid var(--teal);
 }
 
+.proj-images {
+  display: flex;
+  gap: 1em;
+}
+
+.proj-images img {
+  flex: 1;
+  width: 50%;
+  max-height: 20em;
+  object-fit: contain;
+}
+
 .proj-expanded-content {
   display: flex;
   flex-direction: column;
