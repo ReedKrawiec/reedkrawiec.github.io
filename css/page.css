@@ -177,7 +177,7 @@ html{
 /* Projects Section */
 .projects {
   background-color: var(--dark-purple);
-  padding: 4em 2em;
+  padding: 4em 2em 4em 0;
   position: relative;
   overflow: hidden;
   min-height: 100vh;
