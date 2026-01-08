@@ -403,3 +403,10 @@ if (gravityResetBtn && gravityIframe) {
     gravityIframe.src = gravityIframe.src;
   });
 }
+
+// Delay loading gravity iframe to ensure proper dimensions
+setTimeout(() => {
+  if (gravityIframe && gravityIframe.dataset.src) {
+    gravityIframe.src = gravityIframe.dataset.src;
+  }
+}, 4000);
