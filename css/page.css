@@ -181,28 +181,41 @@ html{
   overflow: hidden;
 }
 
-.gravity-bg {
+.gravity-wrapper {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  z-index: 0;
+}
+
+.gravity-bg {
+  width: 100%;
   height: 100%;
   border: none;
   pointer-events: none;
-  z-index: 0;
   opacity: 0.4;
 }
 
-.gravity-bg.playing {
+.projects.playing .gravity-bg {
   pointer-events: auto;
-  opacity: 0.6;
+  opacity: 0.8;
+}
+
+.projects.playing .projects-header,
+.projects.playing .projects-list,
+.projects.playing .gravity-powered {
+  pointer-events: none;
+  opacity: 0.15;
 }
 
 .gravity-overlay {
   position: absolute;
   top: 1.5em;
   left: 1.5em;
-  z-index: 2;
+  z-index: 3;
 }
 
 .gravity-play-btn {
@@ -223,8 +236,15 @@ html{
   color: var(--dark-gray);
 }
 
-.gravity-overlay.hidden {
-  display: none;
+.projects.playing .gravity-play-btn {
+  background-color: var(--orange);
+  color: var(--dark-gray);
+  border-color: var(--orange);
+}
+
+.projects.playing .gravity-play-btn:hover {
+  background-color: var(--light-red);
+  border-color: var(--light-red);
 }
 
 .gravity-powered {

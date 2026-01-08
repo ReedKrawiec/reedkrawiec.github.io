@@ -359,14 +359,13 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Gravity game play button functionality
+// Gravity game play/pause button functionality
 const gravityPlayBtn = document.getElementById('gravity-play-btn');
-const gravityOverlay = document.getElementById('gravity-overlay');
-const gravityBg = document.querySelector('.gravity-bg');
+const projectsSection = document.querySelector('.projects');
 
-if (gravityPlayBtn && gravityOverlay && gravityBg) {
+if (gravityPlayBtn && projectsSection) {
   gravityPlayBtn.addEventListener('click', () => {
-    gravityOverlay.classList.add('hidden');
-    gravityBg.classList.add('playing');
+    const isPlaying = projectsSection.classList.toggle('playing');
+    gravityPlayBtn.textContent = isPlaying ? 'Pause' : 'Play';
   });
 }
