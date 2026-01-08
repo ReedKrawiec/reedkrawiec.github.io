@@ -381,3 +381,16 @@ if (gravityResetBtn && gravityIframe) {
     gravityIframe.src = gravityIframe.src;
   });
 }
+
+// Van link opens Van project section
+const vanLink = document.querySelector('.van-link');
+const vanProject = document.getElementById('proj-van');
+
+if (vanLink && vanProject) {
+  vanLink.addEventListener('click', (e) => {
+    e.preventDefault();
+    document.querySelectorAll('.proj.expanded').forEach(p => p.classList.remove('expanded'));
+    vanProject.classList.add('expanded');
+    vanProject.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  });
+}
