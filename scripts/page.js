@@ -137,6 +137,8 @@ let isDrawing = false;
 let drawValue = 1;
 let previewX = -1;
 let previewY = -1;
+let lastMouseX = -1;
+let lastMouseY = -1;
 
 const editBtn = document.getElementById('gol-edit');
 const patternsBtn = document.getElementById('gol-patterns-btn');
@@ -169,15 +171,56 @@ const getGridCoordsFromPage = (event) => {
   return { x, y };
 };
 
+// Draw a line of cells between two points using Bresenham's algorithm
+// This fixes gaps when mouse events are throttled (common on MacBooks/trackpads)
+const drawLine = (x0, y0, x1, y1) => {
+  const dx = Math.abs(x1 - x0);
+  const dy = Math.abs(y1 - y0);
+  const sx = x0 < x1 ? 1 : -1;
+  const sy = y0 < y1 ? 1 : -1;
+  let err = dx - dy;
+
+  while (true) {
+    if (x0 >= 0 && x0 < width && y0 >= 0 && y0 < height) {
+      grid[x0][y0] = 1;
+    }
+
+    if (x0 === x1 && y0 === y1) break;
+
+    const e2 = 2 * err;
+    if (e2 > -dy) {
+      err -= dy;
+      x0 += sx;
+    }
+    if (e2 < dx) {
+      err += dx;
+      y0 += sy;
+    }
+  }
+};
+
 // Document-level listener for spawning cells when not in edit mode
 document.addEventListener("mousemove", (event) => {
   if (editMode) return;
 
   const { x, y } = getGridCoordsFromPage(event);
   if (x >= 0 && x < width && y >= 0 && y < height) {
-    grid[x][y] = 1;
+    // If we have a previous position, draw a line to fill gaps
+    if (lastMouseX >= 0 && lastMouseY >= 0) {
+      drawLine(lastMouseX, lastMouseY, x, y);
+    } else {
+      grid[x][y] = 1;
+    }
+    lastMouseX = x;
+    lastMouseY = y;
     render(false);
   }
+});
+
+// Reset last mouse position when mouse leaves the window
+document.addEventListener("mouseleave", () => {
+  lastMouseX = -1;
+  lastMouseY = -1;
 });
 
 gameoflife.addEventListener("mousedown", (event) => {
