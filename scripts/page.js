@@ -236,8 +236,17 @@ const getGridCoordsFromTouch = (touch) => {
 };
 
 // Touch event handlers for mobile drawing
+const isOnControls = (element) => {
+  return element.closest('.gol-controls') ||
+         element.closest('.gol-patterns') ||
+         element.tagName === 'BUTTON';
+};
+
 document.addEventListener("touchstart", (event) => {
   if (event.touches.length !== 1) return;
+
+  // Don't interfere with button touches
+  if (isOnControls(event.target)) return;
 
   const touch = event.touches[0];
   const { x, y } = getGridCoordsFromTouch(touch);
@@ -283,8 +292,8 @@ document.addEventListener("touchmove", (event) => {
     lastTouchY = y;
   }
 
-  // Lock scrolling when in edit mode
-  if (editMode) {
+  // Lock scrolling when in edit mode (only if we started drawing)
+  if (editMode && isTouchDrawing) {
     event.preventDefault();
   }
 }, { passive: false });
