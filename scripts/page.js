@@ -223,6 +223,78 @@ document.addEventListener("mouseleave", () => {
   lastMouseY = -1;
 });
 
+// Track last touch position for line drawing
+let lastTouchX = -1;
+let lastTouchY = -1;
+let isTouchDrawing = false;
+
+const getGridCoordsFromTouch = (touch) => {
+  const rect = gameoflife.getBoundingClientRect();
+  const x = Math.floor((touch.clientX - rect.left) / rect.width * width);
+  const y = Math.floor((touch.clientY - rect.top) / rect.height * height);
+  return { x, y };
+};
+
+// Touch event handlers for mobile drawing
+document.addEventListener("touchstart", (event) => {
+  if (event.touches.length !== 1) return;
+
+  const touch = event.touches[0];
+  const { x, y } = getGridCoordsFromTouch(touch);
+
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    isTouchDrawing = true;
+    lastTouchX = x;
+    lastTouchY = y;
+
+    if (!editMode) {
+      grid[x][y] = 1;
+      render(false);
+    }
+  }
+
+  // Lock scrolling when in edit mode
+  if (editMode && isTouchDrawing) {
+    event.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener("touchmove", (event) => {
+  if (!isTouchDrawing || event.touches.length !== 1) return;
+
+  const touch = event.touches[0];
+  const { x, y } = getGridCoordsFromTouch(touch);
+
+  if (x >= 0 && x < width && y >= 0 && y < height) {
+    if (!editMode) {
+      // Draw line from last position to current position
+      if (lastTouchX >= 0 && lastTouchY >= 0) {
+        drawLine(lastTouchX, lastTouchY, x, y);
+      } else {
+        grid[x][y] = 1;
+      }
+      render(false);
+    } else if (isDrawing) {
+      // In edit mode, respect the draw value (toggle)
+      grid[x][y] = drawValue;
+      render(false);
+    }
+    lastTouchX = x;
+    lastTouchY = y;
+  }
+
+  // Lock scrolling when in edit mode
+  if (editMode) {
+    event.preventDefault();
+  }
+}, { passive: false });
+
+document.addEventListener("touchend", () => {
+  isTouchDrawing = false;
+  lastTouchX = -1;
+  lastTouchY = -1;
+});
+
 gameoflife.addEventListener("mousedown", (event) => {
   if (!editMode) return;
 
@@ -268,6 +340,91 @@ gameoflife.addEventListener("mouseup", () => {
 
 gameoflife.addEventListener("mouseleave", () => {
   isDrawing = false;
+});
+
+// Touch event handlers for edit mode on canvas
+gameoflife.addEventListener("touchstart", (event) => {
+  if (!editMode) return;
+  if (event.touches.length !== 1) return;
+
+  event.preventDefault();
+  const touch = event.touches[0];
+  const { x, y } = getGridCoordsFromTouch(touch);
+
+  if (selectedPattern) {
+    placePattern(patterns[selectedPattern], x, y);
+    selectedPattern = null;
+    previewX = -1;
+    previewY = -1;
+    gameoflife.style.cursor = 'crosshair';
+  } else {
+    isDrawing = true;
+    drawValue = grid[x][y] === 0 ? 1 : 0;
+    grid[x][y] = drawValue;
+    lastTouchX = x;
+    lastTouchY = y;
+    render(false);
+  }
+}, { passive: false });
+
+gameoflife.addEventListener("touchmove", (event) => {
+  if (!editMode) return;
+  if (event.touches.length !== 1) return;
+
+  event.preventDefault();
+  const touch = event.touches[0];
+  const { x, y } = getGridCoordsFromTouch(touch);
+
+  // Update pattern preview position
+  if (selectedPattern) {
+    previewX = x;
+    previewY = y;
+    render(false);
+    return;
+  }
+
+  // Handle drawing with line algorithm to prevent gaps
+  if (isDrawing && x >= 0 && x < width && y >= 0 && y < height) {
+    if (lastTouchX >= 0 && lastTouchY >= 0 && (lastTouchX !== x || lastTouchY !== y)) {
+      // Draw line from last position, using the drawValue
+      const dx = Math.abs(x - lastTouchX);
+      const dy = Math.abs(y - lastTouchY);
+      const sx = lastTouchX < x ? 1 : -1;
+      const sy = lastTouchY < y ? 1 : -1;
+      let err = dx - dy;
+      let cx = lastTouchX;
+      let cy = lastTouchY;
+
+      while (true) {
+        if (cx >= 0 && cx < width && cy >= 0 && cy < height) {
+          grid[cx][cy] = drawValue;
+        }
+        if (cx === x && cy === y) break;
+        const e2 = 2 * err;
+        if (e2 > -dy) {
+          err -= dy;
+          cx += sx;
+        }
+        if (e2 < dx) {
+          err += dx;
+          cy += sy;
+        }
+      }
+    } else {
+      grid[x][y] = drawValue;
+    }
+    lastTouchX = x;
+    lastTouchY = y;
+    render(false);
+  }
+}, { passive: false });
+
+gameoflife.addEventListener("touchend", () => {
+  if (editMode) {
+    isDrawing = false;
+    lastTouchX = -1;
+    lastTouchY = -1;
+  }
 });
 
 editBtn.addEventListener('click', () => {
