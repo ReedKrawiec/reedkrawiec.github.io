@@ -169,16 +169,41 @@ const getGridCoordsFromPage = (event) => {
   return { x, y };
 };
 
-// Document-level listener for spawning cells when not in edit mode
+// Mouse position tracking for consistent 144Hz polling
+let lastMouseX = -1;
+let lastMouseY = -1;
+let mousePollingId = null;
+
+// Document-level listener to track mouse position (doesn't spawn cells directly)
 document.addEventListener("mousemove", (event) => {
   if (editMode) return;
 
   const { x, y } = getGridCoordsFromPage(event);
-  if (x >= 0 && x < width && y >= 0 && y < height) {
-    grid[x][y] = 1;
-    render(false);
-  }
+  lastMouseX = x;
+  lastMouseY = y;
 });
+
+// Fixed 144Hz polling interval to spawn cells (~7ms)
+const startMousePolling = () => {
+  if (mousePollingId) return;
+  mousePollingId = setInterval(() => {
+    if (editMode) return;
+    if (lastMouseX >= 0 && lastMouseX < width && lastMouseY >= 0 && lastMouseY < height) {
+      grid[lastMouseX][lastMouseY] = 1;
+      render(false);
+    }
+  }, 7); // ~144Hz
+};
+
+const stopMousePolling = () => {
+  if (mousePollingId) {
+    clearInterval(mousePollingId);
+    mousePollingId = null;
+  }
+};
+
+// Start mouse polling immediately
+startMousePolling();
 
 gameoflife.addEventListener("mousedown", (event) => {
   if (!editMode) return;
